@@ -1,0 +1,148 @@
+<div class="wrapper" data-ng-controller="AdminDashboardController" data-ng-init="init()">
+    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="#/admin">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/department">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
+                    </a>
+                </li>
+				<li>
+					<a href="#/manage-tags">
+						<i class="pe-7s-ribbon"></i>
+						<p>Tags</p>
+					</a>
+				</li>
+				<li>
+					<a href="#/manage-users">
+						<i class="pe-7s-users"></i>
+						<p>Users</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="#/complaints">
+						<i class="pe-7s-settings"></i>
+						<p>Complaints</p>
+					</a>
+				</li>
+				<li>
+					<a href="settings.html">
+						<i class="pe-7s-tools"></i>
+						<p>Settings</p>
+					</a>
+				</li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Complaints</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">All Complaints</h4>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th>Complaint ID</th>
+                                    <th>Complaint</th>
+                                    <th>Description</th>
+                                    <th>Reported By</th>
+                                    <th>Assigned To</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="complaint in complaintStats">
+                                        <td>
+                                        <a ng-href="" ng-click="sendId(complaint.complaintId)">
+                                            {{complaint.complaintId}}
+                                        </a>
+                                        </td>
+                                        <td>
+                                            <i style="font-size: 35px" class="fa fa-circle"
+                                            ng-class="{ 'text-info': complaint.status === 'InProgress',
+                                            'text-warning': complaint.status === 'Open',
+                                            'text-success': complaint.status === 'Resolved'}"></i>
+                                        </td>
+                                        <td>{{complaint.complaintName}}</td>
+                                        <td class="text-right"
+                                            ng-class="{ 'text-danger': complaint.priority === 'Highest',
+                                            'text-warning': complaint.priority === 'High',
+                                            'text-info': complaint.priority === 'Medium',
+                                            'text-success': complaint.priority === 'Low',
+                                            'text-success': complaint.priority === 'Lowest'}">
+                                        <i style="font-size: 35px" class="pe-7s-up-arrow custom-icon-size"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                    </p>
+                </div>
+            </footer>
+    </div>

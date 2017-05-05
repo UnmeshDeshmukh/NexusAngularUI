@@ -1,0 +1,116 @@
+
+<div class="wrapper" ng-controller="UserDashboardController" data-ng-init="mapsinit()">
+    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="admin-dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage-departments.html">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
+                    </a>
+                </li>
+				<li>
+					<a href="manage-tags.html">
+						<i class="pe-7s-ribbon"></i>
+						<p>Tags</p>
+					</a>
+				</li>
+				<li>
+					<a href="manage-users.html">
+						<i class="pe-7s-users"></i>
+						<p>Users</p>
+					</a>
+				</li>
+				<li>
+					<a href="manage-complaints.html">
+						<i class="pe-7s-settings"></i>
+						<p>Complaints</p>
+					</a>
+				</li>
+				<li>
+					<a href="settings.html">
+						<i class="pe-7s-tools"></i>
+						<p>Settings</p>
+					</a>
+				</li>
+                <li class="active">
+                    <a href="admin-maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="#">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Maps</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="map"></div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                    </p>
+                </div>
+            </footer>
+	</div>
+</div>
+
+
+<!-- <script src="assets/js/demo.js"></script> -->
+<!--
+<script type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        demo.initGoogleMaps();
+    });
+</script> -->

@@ -1,0 +1,53 @@
+<div class="wrapper custom-background">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+    </div>
+    <div class="main-panel">
+        <div class="content ">
+            <div class="container-fluid">
+                <!-- Link to create new Organization wala HTML -->
+                <a href="#/signup">
+                    <span class="btn btn-green btn-custom pull-right">Sign Up</span>
+                </a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-4 div-centered">
+                        <div class="card card-user">
+                            <div class="content">
+                                <div class="author custom-author">
+
+                                    <img class="avatar border-gray" src="assets/img/faces/logo.jpg" alt="..."/>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <form name="form" ng-submit="login()" role="form">
+                                        <div class="form-group custom-inc-font-size">
+                                            <input type="email" class="form-control custom-inc-font-size" placeholder="JohnDoe@xyz.com" name="email"  id="email" ng-model="email">
+                                        </div>
+                                        <div class="form-group custom-inc-font-size">
+                                            <input type="password" class="form-control custom-inc-font-size" placeholder="******"  name="password"  id="password" ng-model="password">
+                                        </div>
+                                        <br/>
+
+
+                                        <br/>
+                                        <div class="form-actions">
+                                                <button type="submit" class="btn btn-green center">Get In</button>
+
+                                        </div>
+                                        </form>
+                                    </div>
+
+                                    <div>
+                                        <div ng-if="showError">
+                                                    <span style="color:red">Username/Password Invalid!!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

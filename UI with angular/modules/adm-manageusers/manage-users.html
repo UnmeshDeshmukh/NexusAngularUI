@@ -1,0 +1,144 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="#/admin">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/department">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
+                    </a>
+                </li>
+				<li>
+					<a href="#/manage-tags">
+						<i class="pe-7s-ribbon"></i>
+						<p>Tags</p>
+					</a>
+				</li>
+				<li  class="active">
+					<a href="#/manage-users">
+						<i class="pe-7s-users"></i>
+						<p>Users</p>
+					</a>
+				</li>
+				<li>
+					<a href="#/complaints">
+						<i class="pe-7s-settings"></i>
+						<p>Complaints</p>
+					</a>
+				</li>
+				<li>
+					<a href="settings.html">
+						<i class="pe-7s-tools"></i>
+						<p>Settings</p>
+					</a>
+				</li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Users</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Invite User</h4>
+                        </div>
+                        <div class="content">
+                            <form name="form" ng-submit="inviteUser()" role="form">
+                                <div class="row">
+                                    <div class="form-group col-lg-10 col-md-10">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email" ng-model="to" name="to" id="to">
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-actions">
+                                            <label for="exampleInputEmail1">.......</label>
+                                            <button type="submit" class="btn btn-info btn-fill pull-right">Invite User</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Remove User</h4>
+                        </div>
+                        <div class="content">
+                            <form name="form" ng-submit="removeUser()" role="form">
+                                <div class="row">
+                                    <div class="form-group col-lg-10 col-md-10">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email" ng-model="email">
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-actions">
+                                            <label for="exampleInputEmail1">.......</label>
+                                            <button type="submit" class="btn btn-info btn-fill pull-right">Remove User</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                    </p>
+                </div>
+            </footer>
+    </div>

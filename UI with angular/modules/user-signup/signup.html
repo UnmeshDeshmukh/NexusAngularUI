@@ -1,0 +1,56 @@
+<div class="wrapper custom-background">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+    </div>
+    <div class="main-panel">
+        <div class="content ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-4 div-centered">
+                        <div style="display:inline-block;" class="card card-user">
+                            <div class="content custom-author">
+                                <div class="author custom-author">
+                                    <img class="avatar border-gray" src="assets/img/faces/logo.jpg" alt="..."/>
+                                      <form name="form" ng-submit="usersignup()" role="form">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="center"><h4>Let's get you on board...</h4></div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control custom-margin-10 custom-inc-font-size" placeholder="First Name" required="true" name="firstname" id="firstname" ng-model="firstname">
+                                            <input type="text" class="form-control custom-inc-font-size custom-margin-10" placeholder="Last Name" required="true" name="lastname" id="lastname" ng-model="lastname">
+                                            <input type="email" class="form-control custom-inc-font-size custom-margin-10" placeholder="Email" required="true" name="email" id="email" ng-model="email">
+                                            <input type="password" class="form-control custom-inc-font-size custom-margin-10" placeholder="Password" required="true" name="password" id="password" ng-model="password">
+                                            <input type="password" class="form-control custom-inc-font-size custom-margin-10" placeholder="Re-enter Password" required="true">
+                                            <input type="text" class="form-control custom-inc-font-size custom-margin-10" placeholder="Telephone" required="false" name="phone" id="phone" ng-model="phone">
+                                        </div>
+                                        <!-- Use this diff as ng-show/ng-hide to dispaly message on failure -->
+
+                                        <!-- End of failure div-->
+                                        <br/>
+                                        <br/>
+                                        <div class="pull-left" ng-if="showError">
+                                            <span>Your failure message comes here..!</span>
+                                        </div>
+
+                                        <div class="form-actions">
+
+
+                                                <!-- Make a POST request, and by passing organization's name, and above details as request parameters/in body.
+                                                If response received from server is 200, proceed to login.html page. The backend should now send an activation token to user's email.
+                                                Else, make the div provided above visible
+                                                and display your error message. Error message can be :
+                                                    1.  Invalid/Duplicate Email. Please try again
+                                                -->
+
+                                            <button type="submit" class="btn btn-green center">Sign me up!</button>
+
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

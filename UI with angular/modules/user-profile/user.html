@@ -1,0 +1,212 @@
+<div class="wrapper" data-ng-controller="DashboardController" data-ng-init="init()">
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+        	<div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text">
+                        Nexus
+                    </a>
+                </div>
+
+                <ul class="nav">
+                    <li>
+                        <a href="user-dashboard.html">
+                            <i class="pe-7s-graph"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="user-profile.html">
+                            <i class="pe-7s-user"></i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="user-analytics.html">
+                            <i class="pe-7s-note2"></i>
+                            <p>Analytics</p>
+                        </a>
+                    </li>
+    				<li>
+                        <a href="user-maps.html">
+                            <i class="pe-7s-user"></i>
+                            <p>Maps</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a ng-href="" ng-click="signout()">
+                            <i class="pe-7s-rocket"></i>
+                            <p>Sign Out</p>
+                        </a>
+                    </li>
+                </ul>
+        	</div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">User Profile</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                               <a href="">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4" ngf-drop="uploadFiles($files)"
+                                                ngf-drag-over-class="dragOverClass($event)"
+                                                ng-model="files"
+                                                ng-multiple="true">
+                            <div class="card card-user">
+                                <a ng-click="uploadImage()">
+                                <div class="image">
+                                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                                    <!-- <input type= "file" data-file="param.file"/> -->
+                                </div>
+                                </a>
+                                <div class="content">
+                                    <div class="author">
+                                        <a href="#">
+                                            <img class="avatar border-gray" src="../../../assets/img/faces/face-3.jpg" alt="..."/>
+                                                <h4 class="title">{{myData.user.firstname}} {{myData.user.lastname}}<br />
+                                                    <small>{{myData.user.email}}</small>
+                                                </h4>
+                                        </a>
+                                    </div>
+                                    <p class="description text-center"> {{myData.user.aboutme}}</p>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Edit Profile</h4>
+                                </div>
+                                <div class="content">
+                                      <form name="form" ng-submit="updateUser()" role="form">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="">
+                                                    <label>Organization (disabled)</label>
+                                                    <input type="text" disabled placeholder="Organization" value="Some Organization" ng-model="company" name="company">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="">
+                                                    <label>Username</label>
+                                                    <input type="text" class="form-control" placeholder="myData.user.firstname" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control"  ng-model="myData.user.email" name="email" disabled="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="">
+                                                    <label>First Name</label>
+                                                    <input type="text" class="form-control" ng-model="myData.user.firstname" name="firstname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="">
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" placeholder="Last Name" ng-model="myData.user.lastname" name="lastname">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="">
+                                                    <label>Street Number</label>
+                                                    <input type="text" class="form-control" placeholder="Street Number" ng-model="myData.user.street1" name="streetNum">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="">
+                                                    <label>Street Name</label>
+                                                    <input type="text" class="form-control" placeholder="Street Name" ng-model="myData.user.street2" name="streetName">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="">
+                                                    <label>City</label>
+                                                    <input type="text" class="form-control" placeholder="City" ng-model="myData.user.city" name="city">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="">
+                                                    <label>State</label>
+                                                    <input type="text" class="form-control" placeholder="State" ng-model="myData.user.state" name="city">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="">
+                                                    <label>Country</label>
+                                                    <input type="text" class="form-control" placeholder="Country"  ng-model="myData.user.country" name="state">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="">
+                                                    <label>Postal Code</label>
+                                                    <input type="number" class="form-control" ng-model="myData.user.zip" name="zip">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="">
+                                                    <label>About Me</label>
+                                                    <textarea rows="5" class="form-control" ng-model="myData.user.aboutme" name="aboutme"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    </div>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

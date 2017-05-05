@@ -1,0 +1,56 @@
+<div class="wrapper custom-background">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+    </div>
+    <div class="main-panel">
+        <div class="content ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-lg-4 col-md-10 div-centered">
+                        <div style="display:inline-block;" class="card card-user">
+                            <div class="content custom-author">
+                                <div class="author custom-author">
+                                    <img class="avatar border-gray" src="assets/img/faces/logo.jpg" alt="..."/>
+                                    <form name="form" ng-submit="orgsignup()" role="form">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="center"><h4>Let's get my Organization in...</h4></div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control custom-margin-10 custom-inc-font-size" placeholder="Organization Name" required="true" name="organization_name" id="organization_name" ng-model="organization_name">
+                                            <input type="text" class="form-control custom-inc-font-size custom-margin-10" placeholder="Our Motto" required="false" name="organization_tagline" id="organization_tagline" ng-model="organization_tagline">
+                                            <input type="email" class="form-control custom-inc-font-size custom-margin-10" placeholder="Email" required="true" name="support_email" id="support_email" ng-model="support_email">
+                                            <input type="password" class="form-control custom-inc-font-size custom-margin-10" placeholder="Password" required="true" name="support_password" id="support_password" ng-model="support_password">
+                                            <input type="password" class="form-control custom-inc-font-size custom-margin-10" placeholder="Re-enter Password" required="true">
+                                        </div>
+                                        <!-- Use this diff as ng-show/ng-hide to dispaly message on failure -->
+                                        <div class="pull-left" ng-if="showError">
+                                            <span>Your failure message comes here..!</span>
+                                        </div>
+                                        <!-- End of failure div-->
+                                        <br/>
+                                        <br/>
+                                        <div class="form-actions">
+                                              <button type="submit" class="btn btn-green center" >Sign us up</button>
+                                              <!-- <span style="font-size: 25px;"class="btn btn-green center">
+                                                <!-- Make a POST request, and by passing above details as request parameters/in body.
+                                                If response received from server is 200, proceed to login.html page. The backend should now send an activation token to user's email.
+                                                Else, make the div provided above visible
+                                                and display your error message. Error message can be :
+                                                    1.  Invalid/Duplicate Email. Organization might already be registered. Please try again
+
+                                                    Sign us up!
+                                            </span> -->
+
+                                        </div>
+                                    </div>
+                                    <div ng-if="showError">
+                                                <span style="color:red">The Organization Already Exists!</span>
+                                    </div>
+                                  </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

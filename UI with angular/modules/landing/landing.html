@@ -1,0 +1,50 @@
+<div class="wrapper custom-background">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg"></div>
+    <div class="main-panel">
+        <div class="content ">
+            <div class="container-fluid">
+                <!-- Link to create new Organization wala HTML -->
+                <a href="#/signup-organization">
+                    <span class="btn btn-green btn-custom pull-right">Create New Team</span>
+                </a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-md-4 div-centered">
+                        <div class="card card-user">
+                            <div class="content">
+                                <div class="author">
+                                    <img class="avatar border-gray" src="assets/img/faces/logo.jpg" alt="..."/>
+                                    <div class="col-xs-10 col-sm-10 col-md-10">
+                                    <form name="form" ng-submit="verifyOrganization()" role="form">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control custom-inc-font-size" ng-model="orgname" placeholder="Enter your Organization's Name..." name="orgname" id="orgname">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 col-sm-1">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2">
+                                                <div class="form-actions">
+                                                    <button type="submit" class="btn btn-green custom-inc-font-size pull-right">Login</button>
+                                                </div>
+                                            </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="" ng-if="showError">
+                                                 <span style="color:red">Team does not exist. Would you like to create one?</span>
+                                             </div>
+                                         </div>
+                                      </form>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
