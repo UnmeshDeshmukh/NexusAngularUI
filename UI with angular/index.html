@@ -80,22 +80,22 @@
         var longitude = document.getElementById("longitude");
         var errorSpan = document.getElementById("errorSpan");
         var inputETS = document.getElementById("inputETS");
-            function getLocation() {
-                getTags();
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                    errorSpan.innerHTML = "Geolocation is not supported by this browser.";
-                }
+
+        function getLocation() {
+            getTags();
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                errorSpan.innerHTML = "Geolocation is not supported by this browser.";
             }
+        }
 
-            function showPosition(position) {
-                latitude.value = position.coords.latitude;
-                longitude.value = position.coords.longitude;
-            }
+        function showPosition(position) {
+            latitude.value = position.coords.latitude;
+            longitude.value = position.coords.longitude;
+        }
 
-            $(function(){ // DOM ready
-
+        $(function(){ // DOM ready
             // ::: TAGS BOX
             $("#tags input").on({
                 focusout : function() {
@@ -111,16 +111,15 @@
             $('#tags').on('click', 'span', function() {
                 if(confirm("Remove "+ $(this).text() +"?")) $(this).remove();
             });
+        });
+
+        function getTags() {
+            var arr = [];
+            $("#tags span").each(function(index, elem){
+                arr.push($(this).text());
             });
-
-            function getTags() {
-                var arr = [];
-                $("#tags span").each(function(index, elem){
-                    arr.push($(this).text());
-                });
-                arr.join(",");
-
+            arr.join(",");
                 alert(arr.join(", "));
-            };
-            </script>
+        };
+        </script>
 </html>
