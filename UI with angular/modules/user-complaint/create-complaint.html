@@ -8,50 +8,35 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="admin-dashboard.html">
+                <li class="active">
+                    <!--TODO -->
+                    <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="manage-departments.html">
-                        <i class="pe-7s-way"></i>
-                        <p>Departments</p>
+                    <a href="#/user">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
                     </a>
                 </li>
-				<li>
-					<a href="manage-tags.html">
-						<i class="pe-7s-ribbon"></i>
-						<p>Tags</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-users.html">
-						<i class="pe-7s-users"></i>
-						<p>Users</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-complaints.html">
-						<i class="pe-7s-settings"></i>
-						<p>Complaints</p>
-					</a>
-				</li>
-				<li  class="active">
-					<a href="settings.html">
-						<i class="pe-7s-tools"></i>
-						<p>Settings</p>
-					</a>
-				</li>
                 <li>
-                    <a href="admin-maps.html">
-                        <i class="pe-7s-map-marker"></i>
+                    <a href="#/createcomplaint">
+                        <i class="pe-7s-note2"></i>
+                        <p>Create Complaint</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-user"></i>
                         <p>Maps</p>
                     </a>
                 </li>
+
+
                 <li class="active-pro">
-                    <a href="#">
+                    <a ng-href="" ng-click="signout()" >
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -88,104 +73,102 @@
             <div class="row">
                 <div class="col-md-12">
                     <form name="form" ng-submit="createComplaint()" role="form">
-
-                    <!--javascriptENDS here-->
-                    <div class="card">
-                        <div class="header">
-                            <h4 class="title">Complaint Details</h4>
-                        </div>
-                        <div class="content">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Complaint Name</label>
-                                        <input type="text" class="form-control" placeholder="Complaint Name" ng-model="subject" name="subject" id="complaintName">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <input type="text" class="form-control" placeholder="Open" value="Open" disabled="true" ng-model="status">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Priority</label>
-                                        <select class="form-control" ng-model="priority" name="priority" id="priority">
-                                            <option value=""></option>
-                                            <option value="Low">Low</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="High">High</option>
-                                            <option value="Highest">Highest</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Complaint Details</h4>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Epic</label>
-                                        <input type="text" class="form-control" placeholder="Epic" ng-model="epic" name="epic" id="epic">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Complaint Name</label>
+                                            <input type="text" class="form-control" placeholder="Complaint Name" ng-model="subject" name="subject" id="complaintName">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Label</label>
-                                        <input type="text" class="form-control" placeholder="Label" ng-model="label" name="label" id="label">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <input type="text" class="form-control" placeholder="Open" value="Open" disabled="true" ng-model="status">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Organization</label>
-                                        <input type="text" class="form-control" placeholder="Organization" value="San Jose City" disabled="true" ng-model="org_name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Latitude</label>
-                                        <input id="latitude" type="text" class="form-control" placeholder="Latitude" disabled="true" ng-model="latitude" name="latitude" id="latitude">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Longitude</label>
-                                        <input id="longitude" type="text" class="form-control" placeholder="Longitude" disabled="true" ng-model="longitude" name="longitude" id="longitude">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div >
-                                        <label>.</label>
-                                        <button ng-click="getLocations()" class="btn btn-info btn-fill pull-right form-control">Get my Location</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Complaint Description</label>
-                                        <textarea rows="5" class="form-control" placeholder="Add complaint description here" ng-model="description" name="complaintdesc" id="complaintdesc"> </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Add a tag HERE</label>
-                                        <div id="tags" class="form-control">
-                                            <input id="myinput" type="text" class="form-control" value="" placeholder="Add a tag" ng-model="userTags" name="tags" id="tags"/>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Priority</label>
+                                            <select class="form-control" ng-model="priority" name="priority" id="priority">
+                                                <option value=""></option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                                <option value="Highest">Highest</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <label>.</label>
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-info btn-fill pull-right">Create Complaint</button>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Epic</label>
+                                            <input type="text" class="form-control" placeholder="Epic" ng-model="epic" name="epic" id="epic">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Label</label>
+                                            <input type="text" class="form-control" placeholder="Label" ng-model="label" name="label" id="label">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Organization</label>
+                                            <input type="text" class="form-control" placeholder="Organization" value="San Jose City" disabled="true" ng-model="org_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Latitude</label>
+                                            <input id="latitude" type="text" class="form-control" placeholder="Latitude" disabled="true" ng-model="latitude" name="latitude" id="latitude">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Longitude</label>
+                                            <input id="longitude" type="text" class="form-control" placeholder="Longitude" disabled="true" ng-model="longitude" name="longitude" id="longitude">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div >
+                                            <label>.</label>
+                                            <button ng-click="getLocations()" class="btn btn-info btn-fill pull-right form-control">Get my Location</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Complaint Description</label>
+                                            <textarea rows="5" class="form-control" placeholder="Add complaint description here" ng-model="description" name="complaintdesc" id="complaintdesc"> </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Add a tag HERE</label>
+                                            <div id="tags" class="form-control">
+                                                <input id="myinput" type="text" class="form-control" value="" placeholder="Add a tag" ng-model="userTags" name="tags" id="tags"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <label>.</label>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-info btn-fill pull-right">Create Complaint</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -197,8 +180,9 @@
                 </div>
             </footer>
     </div>
-	</div>
+</div>
 
+<!--TODO-->>
     <!--Javascript staarts here-->
 
     <!-- <script type="text/javascript">

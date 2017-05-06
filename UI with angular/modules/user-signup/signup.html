@@ -21,9 +21,6 @@
                                             <input type="password" class="form-control custom-inc-font-size custom-margin-10" placeholder="Re-enter Password" required="true">
                                             <input type="text" class="form-control custom-inc-font-size custom-margin-10" placeholder="Telephone" required="false" name="phone" id="phone" ng-model="phone">
                                         </div>
-                                        <!-- Use this diff as ng-show/ng-hide to dispaly message on failure -->
-
-                                        <!-- End of failure div-->
                                         <br/>
                                         <br/>
                                         <div class="pull-left" ng-if="showError">
@@ -31,17 +28,7 @@
                                         </div>
 
                                         <div class="form-actions">
-
-
-                                                <!-- Make a POST request, and by passing organization's name, and above details as request parameters/in body.
-                                                If response received from server is 200, proceed to login.html page. The backend should now send an activation token to user's email.
-                                                Else, make the div provided above visible
-                                                and display your error message. Error message can be :
-                                                    1.  Invalid/Duplicate Email. Please try again
-                                                -->
-
                                             <button type="submit" class="btn btn-green center">Sign me up!</button>
-
                                         </div>
                                     </form>
                                     </div>

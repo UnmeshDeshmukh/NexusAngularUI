@@ -13,15 +13,13 @@ angular.module('UserDashboard')
                     method: "GET",
                     params: {email: currentUser,token:token}
                 }).success(function(data,response){
-                //alert(data.user.firstname);
+                    //alert(data.user.firstname);
                     callback(response,data)
                 });
             });
         };
 
-
-
-        service.updateProfile = function(orgname,email,firstname,lastname,street1, street2,city,state, country,zip,aboutme,token,callback){
+        service.updateProfile = function(orgname, email, firstname, lastname, street1, street2, city, state, country, zip, aboutme, token, callback){
 
             $http.get('connection.properties').then(function (response) {
                 var posturl = response.data.rootURL + ':'+ response.data.authentication +'/authentication/update';
@@ -43,8 +41,10 @@ angular.module('UserDashboard')
                 $http.post(posturl,JSON.stringify(data))
                     .success(function(data,response){
                         callback(response,data)
+                    }
+                );
             });
-        });
-      };
+        };
         return service;
-}]);
+    }
+]);

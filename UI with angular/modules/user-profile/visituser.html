@@ -8,32 +8,33 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="user-dashboard.html">
+                <li class="active">
+                    <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="user-profile.html">
+                <li>
+                    <a href="#/user">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="user-analytics.html">
+                    <a href="#/createcomplaint">
                         <i class="pe-7s-note2"></i>
-                        <p>Analytics</p>
+                        <p>Create Complaint</p>
                     </a>
                 </li>
-				<li>
-                    <a href="user-maps.html">
+                <li>
+                    <a href="#/user-maps">
                         <i class="pe-7s-user"></i>
                         <p>Maps</p>
                     </a>
                 </li>
+
                 <li class="active-pro">
-                    <a href="#">
+                    <a ng-href="" ng-click="signout()" >
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -86,7 +87,7 @@
                                       </h4>
                                     </a>
                                 </div>
-                                <p class="description text-center"> {{ profileDoB}} <br><br>
+                                <p class="description text-center"> {{ profileDoB }} <br><br>
                                 </p>
                             </div>
                             <hr>
@@ -136,25 +137,6 @@
 
         <footer class="footer">
             <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                User Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Analytics
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
                 <p class="copyright pull-right">
                     &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
                 </p>

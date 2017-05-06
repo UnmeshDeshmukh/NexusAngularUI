@@ -17,7 +17,7 @@ angular.module('Authentication')
         });
     }
 
-   service.SetCredentials = function(token, email, usertype, userPk){
+   service.SetCredentials = function(token, email, usertype, userPk) {
         $rootScope.globals = {
             currentUser:{
                 email: email,
@@ -25,10 +25,9 @@ angular.module('Authentication')
             }
         };
 
-
-        $cookies.put('email',email);
-        $cookies.put('token',token);
-        $cookies.put('userPk',userPk);
+        $cookies.put('email', email);
+        $cookies.put('token', token);
+        $cookies.put('userPk', userPk);
         if(usertype==="admin"){
             $location.path('/admin');
         }
@@ -36,10 +35,10 @@ angular.module('Authentication')
             $location.path('/userDashboard');
         }
     }
-    service.ClearCredentials = function(){
+    service.ClearCredentials = function() {
         $rootScope.globals = {};
         $cookies.remove('globals');
-        $cookies.resmove('orgname');
+        $cookies.remove('orgname');
         $location.path('/landing');
     }
     return service;

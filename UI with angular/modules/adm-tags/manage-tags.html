@@ -1,13 +1,5 @@
 <div class="wrapper" data-ng-controller="AdminTagsController" data-ng-init="init()">
     <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
-
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
@@ -16,42 +8,42 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="admin-dashboard.html">
+                <li class="active">
+                    <a href="#/admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="manage-departments.html">
+                    <a href="#/department">
                         <i class="pe-7s-way"></i>
                         <p>Departments</p>
                     </a>
                 </li>
-				<li class="active">
-					<a href="#/manage-tags">
-						<i class="pe-7s-ribbon"></i>
-						<p>Tags</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-users.html">
-						<i class="pe-7s-users"></i>
-						<p>Users</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-complaints.html">
-						<i class="pe-7s-settings"></i>
-						<p>Complaints</p>
-					</a>
-				</li>
-				<li>
-					<a href="settings.html">
-						<i class="pe-7s-tools"></i>
-						<p>Settings</p>
-					</a>
-				</li>
+                <li>
+                    <a href="#/manage-tags">
+                        <i class="pe-7s-ribbon"></i>
+                        <p>Tags</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/manage-users">
+                        <i class="pe-7s-users"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/complaints">
+                        <i class="pe-7s-settings"></i>
+                        <p>Complaints</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.html">
+                        <i class="pe-7s-tools"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
                 <li>
                     <a href="admin-maps.html">
                         <i class="pe-7s-map-marker"></i>
@@ -59,7 +51,7 @@
                     </a>
                 </li>
                 <li class="active-pro">
-                    <a href="#">
+                    <a ng-href="" ng-click="signout()">
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -170,46 +162,32 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">All Tags</h4>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <th>Tag ID</th>
-                                    	<th>Tag Name</th>
-                                    	<th>Department Name</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="tag in tagData">
-                                            <td>
-                                                <!-- <a ng-href="" ng-click="sendId(complaint.complaintId)"> -->
-                                                    {{tag.tagpk}}
-                                                <!-- </a> -->
-                                            </td>
-                                            <td>
-                                                    {{tag.tagname}}
-                                            </td>
-                                            <td>{{tag.dept_name}}</td>
-                                            <td>
-                                                    {{tag.tagdesc}}
-                                            </td>
-                                            <!-- <td class="text-right"
-                                                    ng-class="{ 'text-danger': complaint.priority === 'Highest',
-                                                    'text-warning': complaint.priority === 'High',
-                                                    'text-info': complaint.priority === 'Medium',
-                                                    'text-success': complaint.priority === 'Low',
-                                                    'text-success': complaint.priority === 'Lowest'}">
-                                            <i style="font-size: 35px" class="pe-7s-up-arrow custom-icon-size"></i> -->
-                                        </tr>
-                                            </td>
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">All Tags</h4>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th>Tag ID</th>
+                                    <th>Tag Name</th>
+                                    <th>Department Name</th>
+                                    <th>Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="tag in tagData">
+                                        <td> {{tag.tagpk}} </td>
+                                        <td> {{tag.tagname}} </td>
+                                        <td> {{tag.dept_name}} </td>
+                                        <td> {{tag.tagdesc}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>

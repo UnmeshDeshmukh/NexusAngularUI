@@ -2,13 +2,6 @@
 <div class="wrapper" ng-controller="UserDashboardController" data-ng-init="mapsinit()">
     <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
 
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
@@ -17,50 +10,34 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="admin-dashboard.html">
+                <li class="active">
+                    <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="manage-departments.html">
-                        <i class="pe-7s-way"></i>
-                        <p>Departments</p>
+                    <a href="#/user">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
                     </a>
                 </li>
-				<li>
-					<a href="manage-tags.html">
-						<i class="pe-7s-ribbon"></i>
-						<p>Tags</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-users.html">
-						<i class="pe-7s-users"></i>
-						<p>Users</p>
-					</a>
-				</li>
-				<li>
-					<a href="manage-complaints.html">
-						<i class="pe-7s-settings"></i>
-						<p>Complaints</p>
-					</a>
-				</li>
-				<li>
-					<a href="settings.html">
-						<i class="pe-7s-tools"></i>
-						<p>Settings</p>
-					</a>
-				</li>
-                <li class="active">
-                    <a href="admin-maps.html">
-                        <i class="pe-7s-map-marker"></i>
+                <li>
+                    <a href="#/createcomplaint">
+                        <i class="pe-7s-note2"></i>
+                        <p>Create Complaint</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-user"></i>
                         <p>Maps</p>
                     </a>
                 </li>
+
+
                 <li class="active-pro">
-                    <a href="#">
+                    <a ng-href="" ng-click="signout()" >
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -105,7 +82,7 @@
 	</div>
 </div>
 
-
+<!--TODO : Maps Javascript-->
 <!-- <script src="assets/js/demo.js"></script> -->
 <!--
 <script type="text/javascript"></script>

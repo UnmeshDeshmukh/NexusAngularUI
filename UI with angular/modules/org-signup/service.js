@@ -12,9 +12,12 @@ angular.module('OrganizationSignupPage')
             support_email:support_email,
             support_password:support_password
         }
-        $http.post('http://192.168.0.28:8082/organization/createOrganization',JSON.stringify(data))
-        .success(function(data,response){
-            callback(response,data)
+        $http.get('connection.properties').then(function (response) {
+            var posturl = response.data.rootURL + ':'+ response.data.organization +'/organization/createOrganization';
+            $http.post(posturl,JSON.stringify(data))
+            .success(function(data,response){
+                callback(response,data)
+            });
         });
     };
     return service;

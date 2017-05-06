@@ -5,59 +5,43 @@ angular.module('AdminManageUsers')
 .factory('ManageUsersService',
 ['$http','$cookieStore','$rootScope','$timeout',
 function($http,$cookieStore,$rootScope,$timeout){
-  var service = {};
+    var service = {};
 
+    //service to invite users
+    service.addUser = function(org_name,token,to,callback){
 
-  service.addUser = function(org_name,token,to,callback){
+        $http.get('connection.properties').then(function (response) {
+            var posturl = response.data.rootURL + ':'+ response.data.authentication +'/authentication/invite';
+            var data={
+                organizationname: org_name,
+                token:token,
+                to:to,
+                link:window.location.href
+            }
 
-    $http.get('connection.properties').then(function (response) {
-        var posturl = response.data.rootURL + ':'+ response.data.authentication +'/authentication/invite';
-        var data={
-          organizationname: org_name,
-          token:token,
-          to:to,
-          link:"www.github.com/faisal9227"
-        }
-
-        $http.post(posturl,JSON.stringify(data))
-            .success(function(data,response){
-                callback(response,data)
+            $http.post(posturl,JSON.stringify(data))
+                .success(function(data,response){
+                    console.log("Admin-Manage-Users: Invite email has been sent to user at: "+ data.to);
+                    callback(response,data)
+                });
         });
-    });
-  };
+    };
 
+    //service to remove users
+    service.remove = function(email,token,callback){
 
+        $http.get('connection.properties').then(function (response) {
+            var posturl = response.data.rootURL + ':'+ response.data.authentication +'/authentication/remove';
+            var data={
+                email:email,
+                token:token
+            }
 
-  service.remove = function(email,token,callback){
-
-    $http.get('connection.properties').then(function (response) {
-        var posturl = response.data.rootURL + ':'+ response.data.authentication +'/authentication/remove';
-        var data={
-          email:email,
-          token:token
-        }
-
-        $http.post(posturl,JSON.stringify(data))
-            .success(function(data,response){
-                callback(response,data)
+            $http.post(posturl,JSON.stringify(data))
+                .success(function(data,response){
+                    callback(response,data)
+                });
         });
-    });
-  };
-
-
-
-
-  // service.updateDepartment = function(dept_name,dept_desc,org_name,dept_head,token,callback){
-  //   var data ={
-  //     dept_name : dept_name,
-  //     dept_desc : dept_desc,
-  //     dept_head:dept_head,
-  //     token:token
-  //   }
-  //   $http.post('http://192.168.0.28:8080/department/register',JSON.stringify(data))
-  //       .success(function(data,response){
-  //           callback(response,data)
-  //       });
-  // };
-  return service;
+    };
+    return service;
 }]);
