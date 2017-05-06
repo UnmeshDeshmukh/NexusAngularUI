@@ -9,9 +9,14 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
   var currentUserEmail = $cookies.get('email');
 
   var init = function () {
+
+    //calling method from AuthenticationService to feth all complaints
     AdminDashboardService.getAllComplaints(token, function(response, data){
+        //storing result in scope variable
         $scope.complaintStats = data;
         console.log("This is the data"+data);
+
+        //helper funtion to return count of complaints for a  particular status
         function getStatusCount(status) {
             var count = 0;
             for (var i = 0; i < data.length; i++) {
@@ -21,24 +26,26 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
             }
             return count;
         }
+
+        //series parameters for pie-chart
         var r = getStatusCount('Resolved');
         var o = getStatusCount('Open');
         var i = getStatusCount('InProgress');
+
+        //displaying pie-chart
         Chartist.Pie('#chartPreferences', {
           labels: ['Resolved','Open','InProgress'],
           series: [r, o, i]
         });
 
+        //helper function to return count of complaints for a given status & month
         function getComplaintCount(month, status) {
               var count = 0;
-
               for (var i=0; i < data.length; i++) {
                   var date = new Date(data[i].reportedAt);
-                  //console.log("Month:"+ month + "Status:" + status + "MOnth:="+date.getMonth());
                   if(date.getMonth() === month && data[i].status === status){
                       count++;
                   }
-
               }
               return count;
           }
@@ -85,15 +92,16 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
           var novI = getComplaintCount(11, "InProgress");
           var decI = getComplaintCount(12, "InProgress");
 
+          //initializing data for bar-graph
           var data = {
-              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
               series: [
                   [janO, febO, marO, aprO, mayO, junO, julO, augO, sepO, octO, novO, decO],
                   [janI, febI, marI, aprI, mayI, junI, julI, augI, sepI, octI, novI, decI],
                   [janR, febR, marR, aprR, mayR, junR, julR, augR, sepR, octR, novR, decR]
               ]
           };
-          //console.log(data);
+
           var options = {
               seriesBarDistance: 10,
               axisX: {
@@ -113,17 +121,17 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
               }]
           ];
 
+          //funtion to draw bar chart
           Chartist.Bar('#chartActivity', data, options, responsiveOptions);
-
-
-
-
-
     });
   };
+
+  //call to init function
   init();
 
+  //assigning signout function to scope
   $scope.signout = function() {
+      //calling implementation of signout, which is written in AuthenticationService
       AuthenticationService.ClearCredentials();
   }
 
