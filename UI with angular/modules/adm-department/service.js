@@ -16,7 +16,7 @@ function($http,$cookieStore,$rootScope,$timeout){
                 method: "GET",
                 params: {token:token,organizationname: org_name}
             }).success(function(data,response){
-                console.log("Admin-Department-Service: Fetch all departments successfully. Departments: "+data.departments);
+
                 callback(response,data)
             });
         });
@@ -45,7 +45,7 @@ function($http,$cookieStore,$rootScope,$timeout){
             dept_head:dept_head,
             token:token
         }
-        console.log(console.log("Admin-Department-Service: Posting data to register department: "+ data);
+        
         $http.get('connection.properties').then(function (response) {
             var posturl = response.data.rootURL + ':' + response.data.department + 'department/register';
             //'http://192.168.0.28:8080/department/register'
