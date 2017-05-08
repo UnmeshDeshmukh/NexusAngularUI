@@ -93,7 +93,9 @@
     "sorted-object": "^1.0.0",
     "stringmap": "^0.2.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "angular-multiple-select": "^1.1.2"
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"

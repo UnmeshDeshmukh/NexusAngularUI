@@ -10,13 +10,13 @@ function($http,$cookieStore,$rootScope,$timeout){
         console.log("Admin-Department-Service: Fetching all departments");
         $http.get('connection.properties').then(function (response) {
             //var geturl = 'http://192.168.0.28:8080/department/getAll';
-            var geturl = response.data.rootURL + ':' + response.data.department + '/department/getAll';
+            var geturl = response.data.rootURL + ':' + response.data.department + 'department/getAll';
             $http({
                 url: geturl,
                 method: "GET",
                 params: {token:token,organizationname: org_name}
             }).success(function(data,response){
-                console.log("Admin-Department-Service: Fetch all departments successfully. Departments: "+data.departments);
+
                 callback(response,data)
             });
         });
@@ -45,9 +45,9 @@ function($http,$cookieStore,$rootScope,$timeout){
             dept_head:dept_head,
             token:token
         }
-        console.log("Admin-Department-Service: Posting data to register department: "+ data);
+        
         $http.get('connection.properties').then(function (response) {
-            var posturl = response.data.rootURL + ':' + response.data.department + '/department/register';
+            var posturl = response.data.rootURL + ':' + response.data.department + 'department/register';
             //'http://192.168.0.28:8080/department/register'
             $http.post(posturl,JSON.stringify(data))
             .success(function(data,response){

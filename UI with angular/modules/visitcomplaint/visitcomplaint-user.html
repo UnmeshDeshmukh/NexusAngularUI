@@ -1,0 +1,275 @@
+<div class="wrapper" data-ng-controller="VisitComplaintController" data-ng-init="init()">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/createcomplaint">
+                        <i class="pe-7s-note2"></i>
+                        <p>Create Complaint</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-user"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+
+
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()" >
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand title">{{complaintId}}  {{complaintStats.subject}}</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="row" style="padding:0px 10px 0px 10px">
+                    <div class="col-md-3" >
+                        <label style="width:100%" class="btn btn-success btn-fill"> Update</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="Open"> Open</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="InProgess"> InProgress</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="Resolved"> Resolved</label>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <br/><br/>
+                    <div class="row">
+                        <span style="padding-left:15px;"class="custom-legend"><b>Details</b></span><hr>
+                        <div class="col-md-6 custom-legend">
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Type</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>Complaint</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Status</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <i class="fa fa-circle"
+                                    ng-class="{ 'text-info': status === 'InProgress',
+                                                'text-warning': status === 'Open',
+                                                'text-success': status === 'Resolved'}"></i>
+                                    <span>{{status}}</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Priority</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6" >
+                                    <i class="pe-7s-up-arrow "
+                                    ng-class="{ 'text-danger': priority === 'Highest',
+                                                'text-warning': priority === 'High',
+                                                'text-info': priority === 'Medium',
+                                                'text-success': priority === 'Low'}"></i>
+                                    <select ng-model="priority">
+                                        <option>Highest</option>
+                                        <option>High</option>
+                                        <option>Medium</option>
+                                        <option>Low</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 custom-legend">
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Label</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{complaintStats.label}}<span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Latitude</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{complaintStats.latitude}}</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Longitude</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{complaintStats.latitude}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/><br/>
+                    <div class="row">
+                        <span style="padding-left:15px;"class="custom-legend"><b>Attachments</b></span><hr>
+                        <div style="padding-left:15px; margin:20px 40px 20px 20px" class="custom-legend card">
+                            {{complaintStats.attachments}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <span style="padding-left:15px;"class="custom-legend"><b>Description</b></span><hr>
+                        <div style="padding-left:15px; margin:20px 40px 20px 20px" class="custom-legend card">
+                            {{complaintStats.description}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <span style="padding-left:15px;" class="custom-legend"><b>Comments</b></span><hr>
+                        <div style="padding-left:15px; margin:20px 40px 20px 20px" class="custom-legend card">
+                            <div ng-repeat="comment in comments.comments">
+                                <br>
+                                <span class="custom-legend">{{comment.user.firstname}} {{comment.user.lastname}} on {{comment.comment_time}}</span>
+                                <br>
+                                <span class="custom-legend">{{comment.comment}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form name="form" ng-submit="postComment()" role="form">
+                        <div class="row">
+                            <div style="padding-left:15px; margin:20px 40px 20px 0px" class="form-group">
+                                <label>Add Comment</label>
+                                <textarea rows="5" class="form-control" placeholder="Add tag description here" ng-model="newcomment"> </textarea>
+							     <br>
+                                <div class="col-md-3 pull-right" >
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success btn-fill" >Add Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col-md-4">
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <span style="padding-left:15px;"class="custom-legend"><b>People</b></span><hr>
+                        <div class="custom-legend">
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Reporter</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{complaintStats.reporterName}}</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Assigned to</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{complaintStats.assigneeName}}</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Watchers</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6" ng-repeat="watcher in complaintStats.watchers">
+                                    <span>{{watcher.userName}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <span style="padding-left:15px;"class="custom-legend"><b>Dates</b></span><hr>
+                        <div class="custom-legend">
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Reported At</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{reportedDateinMonths}}</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row form-control">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend">Last Updated At</span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span>{{lastUpdatedAtDateinMonths}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                </p>
+            </div>
+        </footer>
+    </div>

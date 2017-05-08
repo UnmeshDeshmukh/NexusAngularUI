@@ -19,20 +19,24 @@ angular.module('CreateComplaint')
                                         subject,
                                         orgname,
                                         token,
+                                        firstname,
+                                        lastname,
                                         callback){
 
         $http.get('connection.properties').then(function (response) {
             var posturl = response.data.complaintRootURL + ':'+ response.data.complaint +'/complaint';
+            var reportername = firstname + " " + lastname;
+            console.log(reportername);
             var data={
                 description: description,
                 lastUpdatedAt:lastUpdatedAt,
                 reportedAt:lastUpdatedAt,
-                status:"open",
+                status:"Open",
                 label:label,
                 priority:priority,
                 latitude:37.22,
                 longitude:-121.565,
-                //reporterName:userPk,
+                reporterName:reportername,
                 reporter:userPk,
                 userTags:userTags,
                 attachments:attachments,
