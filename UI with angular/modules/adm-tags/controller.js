@@ -33,12 +33,62 @@ function($scope,$rootScope,$cookies,$location,AdminTagsService,AuthenticationSer
     $scope.addTags = function(){
         AdminTagsService.postTags($scope.tagname, $scope.tagdesc, $scope.dept_name, token, function(response, data){
             //$route.reload();
+            if( data.message === 'Successful'){
+                $.notify({
+                    icon: "pe-7s-gift",
+                    message: "Tag was successfully added!"
+                },{
+                    type: 'info',
+                    timer: 4000,
+                    placement: {
+                        from: 'top',
+                        align: 'center'
+                    }
+                });
+            } else {
+                $.notify({
+                    icon: "pe-7s-gift",
+                    message: "Snap! Something went wrong while adding the tag!"
+                },{
+                    type: 'danger',
+                    timer: 4000,
+                    placement: {
+                        from: 'top',
+                        align: 'center'
+                    }
+                });
+            }
         });
     };
 
     $scope.updateTags = function(){
         AdminTagsService.postTags($scope.updatetagname, $scope.updatetagdesc, $scope.updatesdept_name, token, function(response, data){
             //$route.reload();
+            if( data.message === 'Successful'){
+                $.notify({
+                    icon: "pe-7s-gift",
+                    message: "Tag was successfully updated"
+                },{
+                    type: 'info',
+                    timer: 4000,
+                    placement: {
+                        from: 'top',
+                        align: 'center'
+                    }
+                });
+            } else {
+                $.notify({
+                    icon: "pe-7s-gift",
+                    message: "Snap! Something went wrong while updating the tag!"
+                },{
+                    type: 'danger',
+                    timer: 4000,
+                    placement: {
+                        from: 'top',
+                        align: 'center'
+                    }
+                });
+            }
         });
     };
 

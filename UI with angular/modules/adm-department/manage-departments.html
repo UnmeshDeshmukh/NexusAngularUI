@@ -8,13 +8,13 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="#/admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="#/department">
                         <i class="pe-7s-way"></i>
                         <p>Departments</p>
@@ -39,13 +39,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="settings.html">
+                    <a href="#/settings">
                         <i class="pe-7s-tools"></i>
                         <p>Settings</p>
                     </a>
                 </li>
                 <li>
-                    <a href="admin-maps.html">
+                    <a href="#/admin-maps">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
@@ -166,31 +166,36 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="header">
+                        <div class="header col-md-6">
                             <h4 class="title">All Departments</h4>
+                            <p class="category">Departments registered so far...</p>
                         </div>
-                        <div class="content table-responsive table-full-width">
-                            <div class="row">
-                                <div class="pull-right col-md-6">
-                                    <input type="text" ng-model="deptSearch" placeholder="Search HERE...">
+                        <div class="row">
+                            <div class="container-fluid">
+                                <div class="content table-responsive container-fluid">
+                                    <div class="row">
+                                        <div class="pull-right col-md-6">
+                                            <input type="text" ng-model="deptSearch" placeholder="Search HERE...">
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover table-striped" style="text-align: center;">
+                                        <thead>
+                                            <th style="text-align: center;">Department ID</th>
+                                            <th style="text-align: center;">Department Name</th>
+                                            <th style="text-align: center;">Department Head</th>
+                                            <th style="text-align: center;">Description</th>
+                                        </thead>
+                                        <tbody ng-repeat="department in myData.departments | filter:deptSearch">
+                                            <tr>
+                                                <td>{{department.deptpk}}</td>
+                                                <td>{{department.dept_name}}</td>
+                                                <td>{{department.dept_head}}</td>
+                                                <td>{{department.dept_desc}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <th>Department ID</th>
-                                    <th>Department Name</th>
-                                    <th>Department Head</th>
-                                    <th>Description</th>
-                                </thead>
-                                <tbody ng-repeat="department in myData.departments | filter:deptSearch">
-                                    <tr>
-                                        <td>{{department.deptpk}}</td>
-                                        <td>{{department.dept_name}}</td>
-                                        <td>{{department.dept_head}}</td>
-                                        <td>{{department.dept_desc}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
