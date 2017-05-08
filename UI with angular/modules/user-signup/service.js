@@ -19,7 +19,12 @@ angular.module('UserSignup')
             .success(function(data,response){
                 callback(response,data)
             });
-        };
-    return service;
         });
+    };
+    return service;
+
+
+
+
+
 }]);

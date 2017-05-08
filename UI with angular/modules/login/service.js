@@ -17,7 +17,7 @@ angular.module('Authentication')
         });
     }
 
-   service.SetCredentials = function(token, email, usertype, userPk) {
+   service.SetCredentials = function(token, email, usertype, userPk,firstname,lastname) {
         $rootScope.globals = {
             currentUser:{
                 email: email,
@@ -28,6 +28,8 @@ angular.module('Authentication')
         $cookies.put('email', email);
         $cookies.put('token', token);
         $cookies.put('userPk', userPk);
+        $cookies.put('firstname',firstname);
+        $cookies.put('lastname',lastname);
         if(usertype==="admin"){
             $location.path('/admin');
         }

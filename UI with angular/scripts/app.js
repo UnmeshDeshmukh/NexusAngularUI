@@ -11,11 +11,14 @@ angular.module('UserDashboardModule',[]);
 angular.module('AdminManageUsers',[]);
 angular.module('AdminTags',[]);
 angular.module('CreateComplaint',[]);
+angular.module('VisitComplaint',[]);
+
 angular.module('NexusApp',[
   'LandingPage',
   'Authentication',
   'OrganizationSignupPage',
   'UserSignup',
+  'VisitComplaint',
   'UserDashboard',
   'AdminDashboard',
   'CreateComplaint',
@@ -44,6 +47,14 @@ angular.module('NexusApp',[
       templateUrl:'modules/user-signup/signup.html'
 
     })
+    .when('/complaintdetails/:complaintId',{
+      controller: 'VisitComplaintController',
+      templateUrl:'modules/visitcomplaint/visit-complaint.html'
+    })
+    .when('/usercomplaintdetails/:complaintId',{
+      controller: 'VisitComplaintController',
+      templateUrl:'modules/visitcomplaint/visitcomplaint-user.html'
+    })
     .when('/login',{
       controller:'LoginController',
       templateUrl: 'modules/login/login.html'
@@ -56,6 +67,8 @@ angular.module('NexusApp',[
       controller:'AdminDashboardController',
       templateUrl:'modules/adm-dashboard/admin-dashboard.html'
     })
+
+
     .when('/manage-tags',{
       controller:'AdminTagsController',
       templateUrl:'modules/adm-tags/manage-tags.html'
