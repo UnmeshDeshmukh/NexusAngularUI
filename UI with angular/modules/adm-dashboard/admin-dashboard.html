@@ -39,13 +39,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="settings.html">
+                    <a href="#/settings">
                         <i class="pe-7s-tools"></i>
                         <p>Settings</p>
                     </a>
                 </li>
                 <li>
-                    <a href="admin-maps.html">
+                    <a href="#/admin-maps">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
@@ -137,20 +137,20 @@
                         <input type="text" class="form-control" ng-model="searchKeyword" placeholder="Search HERE...">
                     </div>
                     <div class="row">
-                        <div class="table-full-width">
-                            <table class="table">
+                        <div class="container-fluid ">
+                            <table class="table table-hover table-striped" style="text-align: center;">
                                 <tbody>
                                     <tr>
-                                        <th>Complaint Id</th>
-                                        <th>Status</th>
-                                        <th>Subject</th>
-                                        <th>Reporter</th>
-                                        <th>Assigned To</th>
-                                        <th>Priority</th>
+                                        <th style="text-align: center;">Complaint Id</th>
+                                        <th style="text-align: center;">Status</th>
+                                        <th style="text-align: center;">Subject</th>
+                                        <th style="text-align: center;">Reporter</th>
+                                        <th style="text-align: center;">Assigned To</th>
+                                        <th style="text-align: center;">Priority</th>
                                     </tr>
                                     <tr ng-repeat="complaint in complaintStats | filter: searchKeyword">
                                         <td>
-                                            <a ng-href="#/complaintdetails/{{complaint.complaintId}}">
+                                            <a ng-href="" ng-click="sendId(complaint.complaintId)">
                                                 {{complaint.complaintId}}
                                             </a>
                                         </td>
@@ -163,7 +163,7 @@
                                         <td>{{complaint.subject}}</td>
                                         <td>{{complaint.reporterName}}</td>
                                         <td>{{complaint.assigneeName}}</td>
-                                        <td class="text-right"
+                                        <td class=""
                                                 ng-class="{ 'text-danger': complaint.priority === 'Highest',
                                                 'text-warning': complaint.priority === 'High',
                                                 'text-info': complaint.priority === 'Medium',

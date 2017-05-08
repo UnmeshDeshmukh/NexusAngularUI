@@ -14,7 +14,7 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
     AdminDashboardService.getAllComplaints(token, function(response, data){
         //storing result in scope variable
         $scope.complaintStats = data;
-        console.log("This is the data"+data);
+        //console.log("This is the data"+data);
 
         //helper funtion to return count of complaints for a  particular status
         function getStatusCount(status) {
@@ -129,6 +129,16 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
   //call to init function
   init();
 
+  var mapsinit = function () {
+      UserDashboardService.getComplaints(userPk,token, function(response, data){
+          $scope.complaintStats = data;
+
+          NgMap.getMap().then(function(map) {
+              $scope.map = map;
+          });
+      });
+  };
+  
   //assigning signout function to scope
   $scope.signout = function() {
       //calling implementation of signout, which is written in AuthenticationService
