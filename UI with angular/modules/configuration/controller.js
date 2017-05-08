@@ -3,7 +3,7 @@
 angular.module('AdminConfig')
 .controller('AdminConfigController',
 ['$scope','$rootScope','$cookies','$location','AdminConfigService','AuthenticationService',
-function($scope,$rootscope,$cookies,$location,AdminConfigService,AuthenticationService){
+function($scope,$rootScope,$cookies,$location,AdminConfigService,AuthenticationService){
   var token = $cookies.get('token');
   var org_name = $cookies.get('orgname');
   var currentUserEmail = $cookies.get('email');
