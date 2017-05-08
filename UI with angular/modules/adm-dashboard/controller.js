@@ -3,7 +3,7 @@
 angular.module('AdminDashboard')
 .controller('AdminDashboardController',
 ['$scope','$rootScope','$cookies','$location','AdminDashboardService','AuthenticationService',
-function($scope,$rootscope,$cookies,$location,AdminDashboardService,AuthenticationService){
+function($scope,$rootScope,$cookies,$location,AdminDashboardService,AuthenticationService){
   var token = $cookies.get('token');
   var org_name = $cookies.get('orgname');
   var currentUserEmail = $cookies.get('email');

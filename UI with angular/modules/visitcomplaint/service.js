@@ -123,11 +123,11 @@ function($http,$cookies,$rootScope,$timeout){
                 watchers:watchers
             };
 
-            var param ={token:token};
+
 
             $http({
                 url: posturl,
-                method: "PUT",
+                method: "POST",
                 data:JSON.stringify(data),
                 params:{token:token}
             }).success(function(data,response){
@@ -136,6 +136,38 @@ function($http,$cookies,$rootScope,$timeout){
         });
     };
 
+
+    service.notify = function(email,
+                             orgname,
+                            watchers,
+                            callback){
+
+            $http.get('connection.properties').then(function (response) {
+                var posturl = response.data.rooturl + ':'+ response.data.notification +'/notify';
+
+                console.log(reportername);
+                var to = email;
+                for(var i =0;i<watchers.watchers;i++){
+                    to = to + "," +watchers.watchers[i].userName;
+                }
+                var data={
+                    to:to,
+                    from:org_name,
+                    text:"Please Login to see the changes made to the complaint regiestered",
+                };
+
+                var param ={token:token};
+
+                $http({
+                    url: posturl,
+                    method: "POST",
+                    data:JSON.stringify(data),
+
+                }).success(function(data,response){
+                        callback(response,data)
+                });
+            });
+        };
 
 
 

@@ -33,6 +33,9 @@ function($scope,$rootScope,$cookies,$location,CreateComplaintService){
             lastname,
             function(response,data){
                 //description,lastUpdatedAt,status,label,priority,latitude,longitude,reporterName,reporter,userTags,attachments,subject,token
+                CreateComplaintService.notify(currentUserEmail,org_name,function(response,data){
+
+                });
 
             });
     };

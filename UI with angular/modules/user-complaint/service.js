@@ -55,5 +55,43 @@ angular.module('CreateComplaint')
             });
         });
     };
+
+
+
+
+    service.notify = function(email,
+                            orgname,
+                            callback){
+
+        $http.get('connection.properties').then(function (response) {
+            var posturl = response.data.rooturl + ':'+ response.data.notification +'/notify';
+
+            var data={
+                to:email,
+                from:org_name,
+                text:"Complaint Successfully Lodged",
+            };
+
+
+
+            $http({
+                url: posturl,
+                method: "POST",
+                data:JSON.stringify(data)
+            }).success(function(data,response){
+                    callback(response,data)
+            });
+        });
+    };
+
+
+
+
+
+
+
+
+
+
     return service;
 }]);

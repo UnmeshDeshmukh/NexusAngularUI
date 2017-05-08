@@ -7,6 +7,7 @@ angular.module('Authentication',[]);
 angular.module('UserDashboard',[]);
 angular.module('AdminDashboard',[]);
 angular.module('AdminDepartment',[]);
+angular.module('AdminConfig',[]);
 angular.module('UserDashboardModule',[]);
 angular.module('AdminManageUsers',[]);
 angular.module('AdminTags',[]);

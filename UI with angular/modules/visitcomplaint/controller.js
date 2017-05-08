@@ -3,7 +3,7 @@
 angular.module('VisitComplaint')
 .controller('VisitComplaintController',
 ['$scope','$rootScope','$cookies','$location','$routeParams','VisitComplaintService','AuthenticationService','AdminDepartmentService',
-function($scope,$rootscope,$cookies,$location,$routeParams,VisitComplaintService,AuthenticationService,AdminDepartmentService){
+function($scope,$rootScope,$cookies,$location,$routeParams,VisitComplaintService,AuthenticationService,AdminDepartmentService){
     var token = $cookies.get('token');
     var org_name = $cookies.get('orgname');
     var currentUserEmail = $cookies.get('email');
@@ -68,9 +68,20 @@ function($scope,$rootscope,$cookies,$location,$routeParams,VisitComplaintService
             $scope.priority,
             function(response,data){
 
-                //On success, call notification service 
+                //On success, call notification service
+                VisitComplaintService.notify(currentUserEmail,
+                    org_name,
+                    $scope.complaintStats,
+                    function(response,data){
+
+                });
             });
     };
+
+
+
+
+
 
     //assigning signout function to scope
     $scope.signout = function() {

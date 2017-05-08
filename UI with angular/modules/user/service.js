@@ -3,8 +3,8 @@
 angular.module('UserDashboardModule')
 
 .factory('UserDashboardService',
-['$http','$cookieStore','$rootScope','$timeout',
-function($http,$cookieStore,$rootScope,$timeout){
+['$http','$cookies','$rootScope','$timeout',
+function($http,$cookies,$rootScope,$timeout){
     var service = {};
 
     service.getComplaints = function (userPk,token, callback){
