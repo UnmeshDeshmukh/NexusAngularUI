@@ -10,6 +10,7 @@ angular.module('AdminDepartment',[]);
 angular.module('UserDashboardModule',[]);
 angular.module('AdminManageUsers',[]);
 angular.module('AdminTags',[]);
+angular.module('AdminConfig',[]);
 angular.module('CreateComplaint',[]);
 angular.module('VisitComplaint',[]);
 
