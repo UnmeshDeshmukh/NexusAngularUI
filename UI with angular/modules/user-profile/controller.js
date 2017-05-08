@@ -13,7 +13,7 @@ function($scope,$rootScope,$routeParams,$cookies,$location,UserProfileService,Au
     var init = function () {
         UserProfileService.getData(currentUserEmail,token,function(response,data){
             $scope.myData = data;
-            console.log("The Retrieved Firstname is:"+data.firstname);
+            console.log("The Retrieved Firstname is: "+data.firstname);
             $scope.company = org_name;
             $scope.firstname = data.firstname;
             $scope.lastname = data.lastname;
@@ -47,7 +47,7 @@ function($scope,$rootScope,$routeParams,$cookies,$location,UserProfileService,Au
                 if( data.message === 'Successful'){
                     $.notify({
                         icon: "pe-7s-gift",
-                        message: "HUrray!!! Your profile was updated successfully!"
+                        message: "Hurray!!! Your profile was updated successfully!"
                     },{
                         type: 'info',
                         timer: 4000,

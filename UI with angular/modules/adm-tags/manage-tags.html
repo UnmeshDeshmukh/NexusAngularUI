@@ -8,7 +8,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="#/admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
@@ -20,7 +20,7 @@
                         <p>Departments</p>
                     </a>
                 </li>
-                <li>
+                <li  class="active">
                     <a href="#/manage-tags">
                         <i class="pe-7s-ribbon"></i>
                         <p>Tags</p>
@@ -39,13 +39,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="settings.html">
+                    <a href="#/settings">
                         <i class="pe-7s-tools"></i>
                         <p>Settings</p>
                     </a>
                 </li>
                 <li>
-                    <a href="admin-maps.html">
+                    <a href="#/admin-maps">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
@@ -164,26 +164,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="header">
+                        <div class="header col-md-6">
                             <h4 class="title">All Tags</h4>
+                            <p class="category">Tags reported into system so far...</p>
                         </div>
-                        <div class="content table-responsive table-full-width">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <th>Tag ID</th>
-                                    <th>Tag Name</th>
-                                    <th>Department Name</th>
-                                    <th>Description</th>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="tag in tagData">
-                                        <td> {{tag.tagpk}} </td>
-                                        <td> {{tag.tagname}} </td>
-                                        <td> {{tag.dept_name}} </td>
-                                        <td> {{tag.tagdesc}} </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="pull-right col-md-6">
+                            <input type="text" ng-model="tagSearch" placeholder="Search HERE...">
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid">
+                                <div class="content table-responsive">
+                                    <table class="table table-hover table-striped" style="text-align: center;">
+                                        <thead>
+                                            <th style="text-align: center;">Tag ID</th>
+                                            <th style="text-align: center;">Tag Name</th>
+                                            <th style="text-align: center;">Department Name</th>
+                                            <th style="text-align: center;">Description</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="tag in tagData | filter: tagSearch">
+                                                <td> {{tag.tagpk}} </td>
+                                                <td> {{tag.tagname}} </td>
+                                                <td> {{tag.dept_name}} </td>
+                                                <td> {{tag.tagdesc}} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

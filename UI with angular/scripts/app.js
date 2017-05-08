@@ -32,21 +32,32 @@ angular.module('NexusApp',[
 
 .config(['$routeProvider', function($routeProvider){
     $routeProvider
+    .when('/',{
+      controller:'LandingController',
+      templateUrl: 'modules/landing/landing.html'
+    })
     .when('/landing',{
       controller:'LandingController',
       templateUrl: 'modules/landing/landing.html',
       hideMenus:true
     })
+    //########################################### Sign Up ######################################//
     .when('/signup-organization',{
       controller:'OrganizationSignupController',
       templateUrl:'modules/org-signup/signup-organization.html'
-
     })
     .when('/signup',{
       controller: 'UserSignupController',
       templateUrl:'modules/user-signup/signup.html'
-
     })
+
+    //########################################### Login ########################################//
+    .when('/login',{
+      controller:'LoginController',
+      templateUrl: 'modules/login/login.html'
+    })
+
+    //###################################### Complaint Visit ######################################//
     .when('/complaintdetails/:complaintId',{
       controller: 'VisitComplaintController',
       templateUrl:'modules/visitcomplaint/visit-complaint.html'
@@ -55,20 +66,18 @@ angular.module('NexusApp',[
       controller: 'VisitComplaintController',
       templateUrl:'modules/visitcomplaint/visitcomplaint-user.html'
     })
-    .when('/login',{
-      controller:'LoginController',
-      templateUrl: 'modules/login/login.html'
-    })
-    .when('/user',{
-        controller:'DashboardController',
-        templateUrl:'modules/user-profile/user.html'
+
+    //####################################### Dashboard #########################################//
+    .when('/userDashboard',{
+      controller:'UserDashboardController',
+      templateUrl:'modules/user/dashboard.html'
     })
     .when('/admin',{
       controller:'AdminDashboardController',
       templateUrl:'modules/adm-dashboard/admin-dashboard.html'
     })
 
-
+    //########################################### Admin operations ######################################//
     .when('/manage-tags',{
       controller:'AdminTagsController',
       templateUrl:'modules/adm-tags/manage-tags.html'
@@ -77,36 +86,38 @@ angular.module('NexusApp',[
       controller:'AdminDepartmentController',
       templateUrl:'modules/adm-department/manage-departments.html'
     })
-    .when('/userDashboard',{
-      controller:'UserDashboardController',
-      templateUrl:'modules/user/dashboard.html'
+    .when('/manage-users',{
+      controller:'ManageUserController',
+      templateUrl:'modules/adm-manageusers/manage-users.html'
+    })
+    .when('/settings',{
+      controller:'AdminConfigController',
+      templateUrl:'modules/configuration/configuration.html'
+    })
+    .when('/admin-maps',{
+      controller:'AdminDashboardController',
+      templateUrl:'modules/adm-dashboard/admin-maps.html'
     })
     .when('/complaint',{
       controller:'AdminDashboardController',
       templateUrl:'modules/adm-dashboard/complaint.html'
+    })
 
+    //########################################### User operations ######################################//
+    .when('/user',{
+        controller:'DashboardController',
+        templateUrl:'modules/user-profile/user.html'
     })
     .when('/createcomplaint',{
       controller:'CreateComplaintController',
       templateUrl:'modules/user-complaint/create-complaint.html'
-    })
-    .when('/manage-users',{
-      controller:'ManageUserController',
-      templateUrl:'modules/adm-manageusers/manage-users.html'
-
-    })
-
-    .when('/',{
-      controller:'LandingController',
-      templateUrl: 'modules/landing/landing.html'
-
     })
     .when('/user-maps',{
       controller:'UserDashboardController',
       templateUrl:'modules/user/user-maps.html'
     })
 
-
+    //########################################### Default ######################################//
     .otherwise({ redirectTo:'/landing'})
 }])
 

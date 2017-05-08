@@ -2,8 +2,8 @@
 
 angular.module('UserDashboardModule')
 .controller('UserDashboardController',
-['$scope','$rootScope','$location','UserDashboardService','$cookies','AuthenticationService',
-function($scope,$rootScope,$location,UserDashboardService,$cookies,AuthenticationService) {
+['$scope', '$rootScope', '$location', 'UserDashboardService', '$cookies', 'NgMap', 'AuthenticationService',
+function($scope, $rootScope, $location, UserDashboardService, $cookies, NgMap, AuthenticationService) {
     //var currentUserEmail = $rootScope.globals.currentUser.email;
     var token = $cookies.get('token');
     var org_name = $cookies.get('orgname');
@@ -13,6 +13,8 @@ function($scope,$rootScope,$location,UserDashboardService,$cookies,Authenticatio
 
     var statusArray = [];
     var init = function () {
+        var datetime = new Date();
+        $scope.someTimeVar = datetime.getHours() + ":" + datetime.getMinutes() +":" + datetime.getSeconds();
         UserDashboardService.getComplaints(userPk,token, function(response, data){
             $scope.complaintStats = data;
             console.log("User-Dashboard-Controller: Received complaint, ComplaintId: " + data[0].complaintId);
@@ -130,6 +132,16 @@ function($scope,$rootScope,$location,UserDashboardService,$cookies,Authenticatio
     };
 
     init();
+
+    var mapsinit = function () {
+        UserDashboardService.getComplaints(userPk,token, function(response, data){
+            $scope.complaintStats = data;
+
+            NgMap.getMap().then(function(map) {
+                $scope.map = map;
+            });
+        });
+    };
 
     $scope.signout = function() {
         AuthenticationService.ClearCredentials();

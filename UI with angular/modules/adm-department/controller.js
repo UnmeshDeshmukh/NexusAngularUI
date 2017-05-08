@@ -14,19 +14,10 @@ function($scope,$rootScope,$cookies,$location,AdminDepartmentService,Authenticat
     $scope.showDeptHead = false;
     $scope.showDeptDesc = false;
 
-    // $scope.updateDepartment = function(){
-    //   AdminDepartmentService.updateDepartmentDetails($scope.dept_name,$scope.dept_desc,$scope.org_name,$scope.dept_head,token, function(response,data){
-    //       //TODO TRACK THE ERRORS IN ADMIN DEPARTMENT
-    //
-    //     }
-    // }
-
-    //alert(token);
     var init = function () {
         AdminDepartmentService.getAllDepartments(org_name,token,function(response,data){
             //TODO Track the errors
             $scope.myData = data;
-
             AdminDepartmentService.getAllUsers(currentUserEmail,token,function(response,data){
                 $scope.allusers = data;
             });
@@ -40,7 +31,6 @@ function($scope,$rootScope,$cookies,$location,AdminDepartmentService,Authenticat
             $scope.showDeptHead = true;
             $scope.showDeptDesc = true;
             $scope.currentDeptData = data;
-
         })
     }
 

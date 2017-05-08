@@ -22,9 +22,4 @@ angular.module('UserSignup')
         });
     };
     return service;
-
-
-
-
-
 }]);

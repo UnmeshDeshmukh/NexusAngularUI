@@ -10,7 +10,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="#">
+                    <a href="#/userDashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -81,7 +81,7 @@
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Last updated {{someTimeVar}}
+                                        <i class="fa fa-clock-o"></i> Last updated: {{someTimeVar}}
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
+                                        <i class="fa fa-check"></i> Last updated: {{someTimeVar}}
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                     <!-- Bar Graph Ends HERE-->
                 </div>
                 <div class="row">
-                    <div class="custom-card-height card">
+                    <div class="card">
                         <div class="header col-md-6">
                             <h4 class="title">Complaints</h4>
                             <p class="category">Complaint Statistics so far...</p>
@@ -118,43 +118,45 @@
                             <input type="text" class="form-control" ng-model="searchKeyword" placeholder="Search HERE...">
                         </div>
                         <div class="row">
-                            <div class="table-full-width">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <th>Complaint Id</th>
-                                            <th>Status</th>
-                                            <th>Subject</th>
-                                            <th>Reporter</th>
-                                            <th>Assigned To</th>
-                                            <th>Priority</th>
-                                        </tr>
-                                        <tr ng-repeat="complaint in complaintStats | filter: searchKeyword">
-                                            <td>
-                                                <a ng-href="" ng-click="sendId(complaint.complaintId)">
-                                                    {{complaint.complaintId}}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                    <i style="font-size: 35px" class="fa fa-circle"
-                                                    ng-class="{ 'text-info': complaint.status === 'InProgress',
-                                                    'text-warning': complaint.status === 'Open',
-                                                        'text-success': complaint.status === 'Resolved'}"></i>
-                                            </td>
-                                            <td>{{complaint.subject}}</td>
-                                            <td>{{complaint.reporterName}}</td>
-                                            <td>{{complaint.assigneeName}}</td>
-                                            <td class="text-right"
-                                                    ng-class="{ 'text-danger': complaint.priority === 'Highest',
-                                                    'text-warning': complaint.priority === 'High',
-                                                    'text-info': complaint.priority === 'Medium',
-                                                    'text-success': complaint.priority === 'Low',
-                                                    'text-success': complaint.priority === 'Lowest'}">
-                                            <i style="font-size: 35px" class="pe-7s-up-arrow custom-icon-size"></i>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="container-fluid">
+                                <div class="card custom-card-padding">
+                                    <table class="table table-hover table-striped" style="text-align: center;">
+                                        <tbody class="card">
+                                            <tr>
+                                                <th style="text-align: center;">Complaint Id</th>
+                                                <th style="text-align: center;">Status</th>
+                                                <th style="text-align: center;">Subject</th>
+                                                <th style="text-align: center;">Reporter</th>
+                                                <th style="text-align: center;">Assigned To</th>
+                                                <th style="text-align: center;">Priority</th>
+                                            </tr>
+                                            <tr ng-repeat="complaint in complaintStats | filter: searchKeyword">
+                                                <td>
+                                                    <a ng-href="" ng-click="sendId(complaint.complaintId)">
+                                                        {{complaint.complaintId}}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                        <i style="font-size: 35px" class="fa fa-circle"
+                                                        ng-class="{ 'text-info': complaint.status === 'InProgress',
+                                                        'text-warning': complaint.status === 'Open',
+                                                            'text-success': complaint.status === 'Resolved'}"></i>
+                                                </td>
+                                                <td>{{complaint.subject}}</td>
+                                                <td>{{complaint.reporterName}}</td>
+                                                <td>{{complaint.assigneeName}}</td>
+                                                <td class=""
+                                                        ng-class="{ 'text-danger': complaint.priority === 'Highest',
+                                                        'text-warning': complaint.priority === 'High',
+                                                        'text-info': complaint.priority === 'Medium',
+                                                        'text-success': complaint.priority === 'Low',
+                                                        'text-success': complaint.priority === 'Lowest'}">
+                                                <i style="font-size: 35px" class="pe-7s-up-arrow custom-icon-size"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

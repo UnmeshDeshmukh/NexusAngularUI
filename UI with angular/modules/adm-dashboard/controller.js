@@ -138,12 +138,10 @@ function($scope,$rootscope,$cookies,$location,AdminDashboardService,Authenticati
           });
       });
   };
-  
+
   //assigning signout function to scope
   $scope.signout = function() {
       //calling implementation of signout, which is written in AuthenticationService
       AuthenticationService.ClearCredentials();
   }
-
-
 }]);

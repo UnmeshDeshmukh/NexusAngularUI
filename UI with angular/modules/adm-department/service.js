@@ -71,17 +71,5 @@ function($http,$cookieStore,$rootScope,$timeout){
         });
     };
 
-  // service.updateDepartment = function(dept_name,dept_desc,org_name,dept_head,token,callback){
-  //   var data ={
-  //     dept_name : dept_name,
-  //     dept_desc : dept_desc,
-  //     dept_head:dept_head,
-  //     token:token
-  //   }
-  //   $http.post('http://192.168.0.28:8080/department/register',JSON.stringify(data))
-  //       .success(function(data,response){
-  //           callback(response,data)
-  //       });
-  // };
   return service;
 }]);

@@ -10,8 +10,8 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="#/userDashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -28,7 +28,7 @@
                         <p>Create Complaint</p>
                     </a>
                 </li>
-                <li>
+                <li  class="active">
                     <a href="#/user-maps">
                         <i class="pe-7s-user"></i>
                         <p>Maps</p>
@@ -70,7 +70,12 @@
             </div>
         </nav>
 
-        <div id="map"></div>
+        <!--<div id="map"></div>-->
+        <div id="gmap" class="custom-overlay">
+            <ng-map center="37.333347, -121.880850" zoom="7" class="custom-overlay">
+                <marker ng-repeat="p in complaintStats track by $index" position="{{p.latitude}}, {{p.longitude}}" <option value="{{p.complaintPk}}/{{p.subject}}"></option></marker>
+            </ng-map>
+        </div>
 
             <footer class="footer">
                 <div class="container-fluid">
@@ -81,13 +86,3 @@
             </footer>
 	</div>
 </div>
-
-<!--TODO : Maps Javascript-->
-<!-- <script src="assets/js/demo.js"></script> -->
-<!--
-<script type="text/javascript"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-        demo.initGoogleMaps();
-    });
-</script> -->
