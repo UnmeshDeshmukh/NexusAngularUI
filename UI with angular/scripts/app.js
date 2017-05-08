@@ -29,6 +29,7 @@ angular.module('NexusApp',[
   'UserDashboardModule',
   'AdminTags',
   'ngRoute',
+  'ngMap',
   'ngCookies'
 ])
 
