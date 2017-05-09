@@ -1,0 +1,179 @@
+<!-- Bootstrap toggle js -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"> </script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<div class="wrapper" data-ng-controller="AdminConfigController" data-ng-init="init()">
+    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="#/admin">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/department">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/manage-tags">
+                        <i class="pe-7s-ribbon"></i>
+                        <p>Tags</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/manage-users">
+                        <i class="pe-7s-users"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/complaints">
+                        <i class="pe-7s-settings"></i>
+                        <p>Complaints</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#/settings">
+                        <i class="pe-7s-tools"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/admin-maps">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Settings</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="form" >
+                <form name="form" ng-submit="updateConfiguration()" role="form">
+                    <div class="col-md-4 card">
+                        <div class="header">
+                            <h4 class="title">Enable Services...</h4>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-6">Notification</label>
+                                    <input class="col-md-6" type="checkbox" data-toggle="toggle" ng-model="checkNotifications" ng-checked="checkNotifications == true">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-6">Tags</label>
+                                    <input class="col-md-6" type="checkbox" data-toggle="toggle" ng-model="checkTags" ng-checked="checkTags == true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-6" >Maps</label>
+                                    <input class="col-md-6" type="checkbox" data-toggle="toggle" ng-model="checkMaps" ng-checked="checkMaps == true">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-6">Watchers</label>
+                                    <input class="col-md-6" type="checkbox" data-toggle="toggle" ng-model="checkWatchers" ng-checked="checkWatchers == true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{checkNotifications}}:{{checkTags}}:{{checkWatchers}}:{{checkMaps}}:{{dbHostname}}:{{dbPort}}:{{dbUsername}}:{{dbPassword }}
+                    <div class="col-md-6 card pull-right">
+                        <div class="header">
+                            <h4 class="title">Custom Database...</h4>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-9 col-sm-9">
+                                <div class="form-group">
+                                    <label>Hostname</label>
+                                    <input type="text" class="form-control" placeholder="Hostname" ng-model="dbHostname">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="form-group">
+                                    <label>Port</label>
+                                    <input type="text" class="form-control" placeholder="Port" ng-model="dbPort">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" class="form-control" placeholder="Username" ng-model="dbUsername">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" ng-model="dbPassword">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <label>.</label>
+                        <button type="submit" class="btn btn-info btn-fill pull-right" >Update Configuration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                    </p>
+                </div>
+            </footer>
+    </div>

@@ -1,0 +1,147 @@
+<div class="wrapper" data-ng-controller="DashboardController" data-ng-init="init()">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/createcomplaint">
+                        <i class="pe-7s-note2"></i>
+                        <p>Create Complaint</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/user-maps">
+                        <i class="pe-7s-user"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()" >
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">User Profile</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid" ng-controller="ControllerName">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a>
+                                    <img class="avatar border-gray" ng-src="assets/img/faces/face-"+ {{ profileid }} + ".jpg" alt="..."/>
+
+                                      <h4 class="title">{{ profileFirstName + ' ' + profileLastName }}<br />
+                                         <small>{{ profileEmail }}</small>
+                                      </h4>
+                                    </a>
+                                </div>
+                                <p class="description text-center"> {{ profileDoB }} <br><br>
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table-full-width">
+                        <table class="table">
+                            <tbody>
+                                <tr ng-repeat="complaint in userComplaints">
+                                    <td>
+                                        <a ng-click="sendId(complaint.complaintPk)">
+                                            {{complaint.complaintPk}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <i style="font-size: 35px" class="fa fa-circle"
+                                        ng-class="{ 'text-info': complaint.status === 'InProgress',
+                                                    'text-warning': complaint.status === 'Open',
+                                                    'text-success': complaint.status === 'Resolved'}"></i>
+                                    </td>
+                                    <td>{{complaint.complaintName}}</td>
+                                    <td class="text-right"
+                                    ng-class="{ 'text-danger': complaint.priority === 'Highest',
+                                                'text-warning': complaint.priority === 'High',
+                                                'text-info': complaint.priority === 'Medium',
+                                                'text-success': complaint.priority === 'Low',
+                                                'text-success': complaint.priority === 'Lowest'}">
+                                        <i style="font-size: 35px" class="pe-7s-up-arrow custom-icon-size"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
