@@ -1,0 +1,100 @@
+.btn-custom {
+    margin: 10px;
+}
+
+.div-centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
+}
+
+.custom-inc-font-size {
+    padding: 25px;
+    height: 60px;
+    font-size: 20px
+}
+
+.custom-icon-size {
+    padding: 0px;
+    margin: 5px;
+    font-size: 35px;
+}
+
+.custom-margin-10 {
+    margin-bottom: 10px;
+}
+
+.custom-background {
+    background-image: url("../img/landing.jpg") ;
+}
+
+.btn-purple {
+    color: #FFFFFF;
+    background-image: url("../img/background.jpg");
+}
+.btn-purple:hover {
+    color: #FFFFFF;
+    background-color: #5d3660;
+}
+
+.btn-red {
+    color: #FFFFFF;
+    background-image: url("../img/red-background.jpg");
+}
+.btn-red:hover {
+    color: #FFFFFF;
+    background-color: ##ff4c4c;
+}
+
+.btn-green {
+    color: #FFFFFF;
+    background-image: url("../img/green-background.jpg");
+}
+.btn-green:hover {
+    color: #FFFFFF;
+    background-color: ##99ff99;
+}
+
+.custom-author {
+    display: inline-block;
+}
+
+.custom-card-height {
+    min-height: 432px;
+}
+
+.custom-card-padding {
+    padding: 10 10 10 10;
+    margin: 10 10 10 10;
+}
+
+.custom-overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

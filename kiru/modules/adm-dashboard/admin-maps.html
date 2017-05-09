@@ -1,0 +1,101 @@
+<div class="wrapper" ng-controller="AdminDashboardController" data-ng-init="mapsinit()">
+    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-5.jpg">
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Nexus
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="#/admin">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/department">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/manage-tags">
+                        <i class="pe-7s-ribbon"></i>
+                        <p>Tags</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/manage-users">
+                        <i class="pe-7s-users"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/complaints">
+                        <i class="pe-7s-settings"></i>
+                        <p>Complaints</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/settings">
+                        <i class="pe-7s-tools"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#/admin-maps">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a ng-href="" ng-click="signout()">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Sign Out</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Maps</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--<div id="map"></div>-->
+        <div id="gmap" class="custom-overlay">
+            <ng-map center="37.333347, -121.880850" zoom="7" class="custom-overlay">
+                <marker ng-repeat="p in complaintStats track by $index" position="{{p.latitude}}, {{p.longitude}}" <option value="{{p.complaintPk}}/{{p.subject}}"></option></marker>
+            </ng-map>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
+                </p>
+            </div>
+        </footer>
+	</div>
+</div>
