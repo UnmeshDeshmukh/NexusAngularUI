@@ -14,6 +14,7 @@ function($scope,$rootScope,$cookies,$location,$routeParams,VisitComplaintService
         //calling method from AuthenticationService to feth all complaints
         VisitComplaintService.getComplaint($scope.complaintId,token, function(response, data){
             //storing result in scope variable
+            console.log(JSON.stringify(data));
             $scope.complaintStats = data;
             $scope.reportedOnDate = new Date(data.reportedAt);
             $scope.lastUpdatedDate = new Date(data.lastUpdatedAt);
@@ -21,9 +22,8 @@ function($scope,$rootScope,$cookies,$location,$routeParams,VisitComplaintService
             console.log("This is the REPORTERNAME"+$scope.complaintStats.reporterName);
 
             VisitComplaintService.getComments($scope.complaintId,token, function(response, data){
-                console.log("In get Comments");
                 $scope.comments = data;
-                console.log("This is the data"+data);
+                
             });
 
             AdminDepartmentService.getAllUsers(currentUserEmail,token,function(response,data){

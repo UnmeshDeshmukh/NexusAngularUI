@@ -26,7 +26,7 @@ angular.module('CreateComplaint')
         $http.get('connection.properties').then(function (response) {
             var posturl = response.data.complaintservice + ':'+ response.data.complaint +'/complaint';
             var reportername = firstname + " " + lastname;
-            console.log(reportername);
+            console.log(latitude + " "+ longitude);
             var data={
                 description: description,
                 lastUpdatedAt:lastUpdatedAt,
@@ -34,8 +34,8 @@ angular.module('CreateComplaint')
                 status:"Open",
                 label:label,
                 priority:priority,
-                latitude:37.22,
-                longitude:-121.565,
+                latitude:latitude,
+                longitude:longitude,
                 reporterName:reportername,
                 reporter:userPk,
                 userTags:userTags,
@@ -45,6 +45,7 @@ angular.module('CreateComplaint')
 
             var param ={token:token};
 
+            console.log(JSON.stringify(data));
             $http({
                 url: posturl,
                 method: "POST",
@@ -56,9 +57,6 @@ angular.module('CreateComplaint')
         });
     };
 
-
-
-
     service.notify = function(email,
                             org_name,
                             callback){
@@ -69,10 +67,8 @@ angular.module('CreateComplaint')
             var data={
                 to:email,
                 from:org_name,
-                text:" New Complaint Successfully Lodged. Please Login for more details"
+                text:"You have Successfully lodged a new Complaint. Sit back and relax while we work on getting it resolved.<br/> You will be receiving regular updates on your complaint. Please feel free to log-in back to Nexus and update the complaint."
             };
-
-
 
             $http({
                 url: posturl,
@@ -83,15 +79,5 @@ angular.module('CreateComplaint')
             });
         });
     };
-
-
-
-
-
-
-
-
-
-
     return service;
 }]);

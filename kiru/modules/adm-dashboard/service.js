@@ -18,5 +18,20 @@ function($http,$cookieStore,$rootScope,$timeout){
             });
         });
     };
+
+    service.getGraphData = function (token, callback){
+        $http.get('connection.properties').then(function (response) {
+            var geturl = response.data.authservice + ':'+ response.data.authentication +'/authentication/graph';
+            $http({
+                url: geturl,
+                method: "GET",
+                params:{token:token}
+            }).success(function(data,response){
+                console.log(JSON.stringify(data));
+                callback(response,data)
+            });
+        });
+    };
+
     return service;
 }]);

@@ -9,7 +9,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="#">
+                    <a href="#/userDashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -71,6 +71,22 @@
         <div class="content container-fluid">
         <form name="form" ng-submit="updateComplaint()" role="form">
             <div class="row">
+                <div class="row" style="padding:0px 10px 0px 10px">
+                    <div class="col-md-3" >
+                        <div class="form-actions">
+                            <button style="width:100%" type="submit" class="btn btn-success btn-fill">Update</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="Open" ng-click="changeStatus('Open')"> Open</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="InProgress" ng-click="changeStatus('InProgress')"> InProgress</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="width:100%" class="btn btn-success btn-fill" ng-model="Resolved" ng-click="changeStatus('Resolved')"> Resolved</label>
+                    </div>
+                </div>
                 <div class="col-md-8">
                     <br/><br/>
                     <div class="row">
@@ -108,7 +124,12 @@
                                                 'text-warning': complaintStats.priority === 'High',
                                                 'text-info': complaintStats.priority === 'Medium',
                                                 'text-success': complaintStats.priority === 'Low'}"></i>
-
+                                    <select class="col-md-6 col-sm-6 col-xs-6" ng-model="complaintStats.priority">
+                                        <option>Highest</option>
+                                        <option>High</option>
+                                        <option>Medium</option>
+                                        <option>Low</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +157,7 @@
                                     <span class="custom-legend"><b>Longitude</b></span>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <span>{{complaintStats.latitude}}</span>
+                                    <span>{{complaintStats.longitude}}</span>
                                 </div>
                             </div>
                         </div>
@@ -202,10 +223,19 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                     <span class="custom-legend"> {{complaintStats.assigneeName}} </span>
+                                    <select ng-model="newlyAssignedTo" ng-options="userData.firstname +' '+userData.lastname for userData in allusers.users">
                                     <!--<span>{{complaintStats.assigneeName}}</span>-->
                                 </div>
                             </div>
-                            
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend"><b>Change Assigned To</b></span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <select ng-model="newlyAssignedTo" ng-options="userData.firstname +' '+userData.lastname for userData in allusers.users">
+                                    <!--<span>{{complaintStats.assigneeName}}</span>-->
+                                </div>
+                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -213,9 +243,18 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                     <span ng-repeat="watcher in complaintStats.watchers">{{watcher.userName}}<br /></span>
+                                    <select ng-model="selectedWatcher" ng-options="userData.firstname +' '+userData.lastname for userData in allusers.users">
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span class="custom-legend"><b>Watchers</b></span>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <span ng-repeat="watcher in complaintStats.watchers">{{watcher.userName}}<br /></span>
+                                    <select ng-model="selectedWatcher" ng-options="userData.firstname +' '+userData.lastname for userData in allusers.users">
+                                </div>
+                            </div>
                             <!--Add complaint watcher here-->
                         </div>
                     </div>

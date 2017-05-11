@@ -124,6 +124,18 @@
                         </div>
                     </div>
                     <!-- Bar Graph Ends HERE-->
+
+                    <div class="col-md-12">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Graph</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content">
+                                <div id="deptNetwork" class="ct-chart" ></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="custom-card-height card">
@@ -192,6 +204,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
         demo.initChartist();
+
+        demo.createGraph();
 
         $.notify({
             icon: "pe-7s-gift",

@@ -42,8 +42,29 @@ function($scope,$rootScope,$cookies,$location,CreateComplaintService,Authenticat
             });
     };
 
-    $scope.getLocations = function(){
+    $scope.getCurrentLocation = function(){
         getLocation();
+        var latitude = document.getElementById("latitude");
+        var longitude = document.getElementById("longitude");
+        var errorSpan = document.getElementById("errorSpan");
+        var inputETS = document.getElementById("inputETS");
+
+        function getLocation() {
+            getTags();
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                errorSpan.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            latitude.value = position.coords.latitude;
+            longitude.value = position.coords.longitude;
+            $scope.latitude = position.coords.latitude;
+            $scope.longitude = position.coords.longitude;
+            console.log("Controller:"+$scope.latitude +" : "+$scope.longitude);
+        }
     }
 
     $scope.signout = function() {
