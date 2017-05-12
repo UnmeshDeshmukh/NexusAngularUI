@@ -12,9 +12,8 @@ function($scope,$rootScope,$cookies,$location,$routeParams,AdminDashboardService
         AdminDashboardService.getGraphData(token, function(response, data){
             $scope.graphData = data;
 
-
             var nodes = new vis.DataSet(data.nodes);
-            console.log(JSON.stringify(nodes));
+            //console.log(JSON.stringify(nodes));
             // create an array with edges
             var edges = new vis.DataSet(data.edges);
 
@@ -24,36 +23,36 @@ function($scope,$rootScope,$cookies,$location,$routeParams,AdminDashboardService
                 edges: edges
             };
             console.log("Now printing graph");
-            var options = {interaction:{hover:true}};
+            var options = {
+                interaction:{hover:true},
+                nodes: {
+                    shape: 'dot',
+                    size: 30,
+                    font: {
+                        size: 32,
+                    },
+                    borderWidth: 2
+                },
+                edges: {
+                    width: 2
+                }
+            };
             var network = new vis.Network(container, graphsdata, options);
 
             network.on("click", function (params) {
                 params.event = "[original event]";
                 if(params.nodes.toString().charAt(0)==='C'){
-                    //console.log("This is the event-=-------"+params.nodes);
-                    //console.log("/complaintdetails/"+params.nodes);
-                    params.nodes = param.nodes.toString().substr(1);
-                    $location.path("/complaintdetails/"+params.nodes);
+                    var complaintPk = params.nodes.toString().substr(1);
+                    $location.path("/complaintdetails/"+complaintPk);
                 }
                 if(params.nodes.toString().charAt(0)==='U'){
+                    var userPk = params.nodes.toString().substr(1);
+                    console.log("Fetched userPk: "+ userPk);
 
-                    console.log("This is the value--"+params.nodes);
-                    console.log(data.nodes.length);
-                    for(var i=0;i<data.nodes.length;i++){
-                        console.log("This is the email id:"+data.nodes[i].title);
-                        if(params.nodes.toString()===data.nodes[i].id.toString()){
-                            console.log("INT THE IF--------------"+data.nodes[i].title);
-                            //params.nodes = param.nodes.toString().substr(1);
-                            //$location.path("/user/"+data.nodes[i].title);
-                            $location.path("/admuser/"+data.nodes[i].title);
-                            break;
-                        }
-
-                    }
+                    $location.path("/admuser/"+userPk);
+                    //console.log($location.path());
                 }
             });
-
-
             network.on("doubleClick", function (params) {
                 params.event = "[original event]";
                 //$location.path("/complaint/"+);
