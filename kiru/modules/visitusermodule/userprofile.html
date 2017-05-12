@@ -1,4 +1,4 @@
-<div class="wrapper" data-ng-controller="DashboardController" data-ng-init="init()">
+<div class="wrapper" data-ng-controller="ProfileController" data-ng-init="init()">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -9,32 +9,31 @@
 
             <ul class="nav">
                 <li>
-                    <a href="#">
+                    <a href="user-dashboard.html">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#/user">
+                <li class="active">
+                    <a href="user-profile.html">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#/createcomplaint">
+                    <a href="user-analytics.html">
                         <i class="pe-7s-note2"></i>
-                        <p>Create Complaint</p>
+                        <p>Analytics</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#/user-maps">
+				<li>
+                    <a href="user-maps.html">
                         <i class="pe-7s-user"></i>
                         <p>Maps</p>
                     </a>
                 </li>
-
                 <li class="active-pro">
-                    <a ng-href="" ng-click="signout()" >
+                    <a href="#">
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -79,14 +78,16 @@
                             </div>
                             <div class="content">
                                 <div class="author">
-                                    <a href="#">
-                                        <img class="avatar border-gray" src="../../../assets/img/faces/face-3.jpg" alt="..."/>
-                                            <h4 class="title">{{myData.user.firstname}} {{myData.user.lastname}}<br />
-                                                <small>{{myData.user.email}}</small>
-                                            </h4>
+                                     <a>
+                                    <img class="avatar border-gray" ng-src="assets/img/faces/face-"+ {{ profileid }} + ".jpg" alt="..."/>
+
+                                      <h4 class="title">{{ profileFirstName + ' ' + profileLastName }}<br />
+                                         <small>{{ profileEmail }}</small>
+                                      </h4>
                                     </a>
                                 </div>
-                                <p class="description text-center"> {{myData.user.aboutme}}</p>
+                                <p class="description text-center"> {{ profileDoB}} <br><br>
+                                </p>
                             </div>
                             <hr>
                             <div class="text-center">
@@ -135,6 +136,25 @@
 
         <footer class="footer">
             <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                User Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Analytics
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
                 <p class="copyright pull-right">
                     &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
                 </p>

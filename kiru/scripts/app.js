@@ -11,6 +11,9 @@ angular.module('AdminConfig',[]);
 angular.module('UserDashboardModule',[]);
 angular.module('AdminManageUsers',[]);
 angular.module('AdminTags',[]);
+angular.module('UserProfile',[]);
+
+
 
 angular.module('CreateComplaint',[]);
 angular.module('VisitComplaint',[]);
@@ -31,6 +34,7 @@ angular.module('NexusApp',[
   'AdminTags',
   'ngRoute',
   'ngMap',
+  'UserProfile',
   'ngCookies'
 ])
 
@@ -111,6 +115,14 @@ angular.module('NexusApp',[
     .when('/user',{
         controller:'DashboardController',
         templateUrl:'modules/user-profile/user.html'
+    })
+    .when('/user/:userId',{
+      controller: 'ProfileController',
+      templateUrl:'modules/visitusermodule/userprofile.html'
+    })
+    .when('/admuser/:userId',{
+      controller: 'ProfileController',
+      templateUrl:'modules/visitusermodule/useradm.html'
     })
     .when('/createcomplaint',{
       controller:'CreateComplaintController',

@@ -21,7 +21,7 @@ function($http,$cookieStore,$rootScope,$timeout){
 
     service.getGraphData = function (token, callback){
         $http.get('connection.properties').then(function (response) {
-            var geturl = response.data.authservice + ':'+ response.data.authentication +'/authentication/graph';
+            var geturl = response.data.authservice + ':'+ response.data.authentication +'/authentication/graph/complaints';
             $http({
                 url: geturl,
                 method: "GET",

@@ -1,4 +1,4 @@
-<div class="wrapper" data-ng-controller="DashboardController" data-ng-init="init()">
+<div class="wrapper" data-ng-controller="ProfileController" data-ng-init="init()">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -8,33 +8,50 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="#">
+                <li class="active">
+                    <a href="#/admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#/user">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                    <a href="#/department">
+                        <i class="pe-7s-way"></i>
+                        <p>Departments</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#/createcomplaint">
-                        <i class="pe-7s-note2"></i>
-                        <p>Create Complaint</p>
+                    <a href="#/manage-tags">
+                        <i class="pe-7s-ribbon"></i>
+                        <p>Tags</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#/user-maps">
-                        <i class="pe-7s-user"></i>
+                    <a href="#/manage-users">
+                        <i class="pe-7s-users"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/complaints">
+                        <i class="pe-7s-settings"></i>
+                        <p>Complaints</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/settings">
+                        <i class="pe-7s-tools"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/admin-maps">
+                        <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
                 </li>
-
                 <li class="active-pro">
-                    <a ng-href="" ng-click="signout()" >
+                    <a ng-href="" ng-click="signout()">
                         <i class="pe-7s-rocket"></i>
                         <p>Sign Out</p>
                     </a>
@@ -68,7 +85,7 @@
         </nav>
 
         <div class="content">
-            <div class="container-fluid" ng-controller="ControllerName">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4">
                     </div>
@@ -135,6 +152,25 @@
 
         <footer class="footer">
             <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                User Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Analytics
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
                 <p class="copyright pull-right">
                     &copy; 2017 <a href="#">Nexus</a>, made with love for a better Social Network
                 </p>

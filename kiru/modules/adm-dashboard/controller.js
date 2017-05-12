@@ -2,8 +2,8 @@
 
 angular.module('AdminDashboard')
 .controller('AdminDashboardController',
-['$scope','$rootScope','$cookies','$location','AdminDashboardService','AuthenticationService',
-function($scope,$rootScope,$cookies,$location,AdminDashboardService,AuthenticationService){
+['$scope','$rootScope','$cookies','$location','$routeParams','AdminDashboardService','AuthenticationService','UserProfileService',
+function($scope,$rootScope,$cookies,$location,$routeParams,AdminDashboardService,AuthenticationService,UserProfileService){
     var token = $cookies.get('token');
     var org_name = $cookies.get('orgname');
     var currentUserEmail = $cookies.get('email');
@@ -19,22 +19,45 @@ function($scope,$rootScope,$cookies,$location,AdminDashboardService,Authenticati
             var edges = new vis.DataSet(data.edges);
 
             var container = document.getElementById('deptNetwork');
-            var data = {
+            var graphsdata = {
                 nodes: nodes,
                 edges: edges
             };
             console.log("Now printing graph");
             var options = {interaction:{hover:true}};
-            var network = new vis.Network(container, data, options);
+            var network = new vis.Network(container, graphsdata, options);
 
             network.on("click", function (params) {
-                deleteSelected();
                 params.event = "[original event]";
-                console.log(JSON.stringify(params, null, 4));
+                if(params.nodes.toString().charAt(0)==='C'){
+                    //console.log("This is the event-=-------"+params.nodes);
+                    //console.log("/complaintdetails/"+params.nodes);
+                    params.nodes = param.nodes.toString().substr(1);
+                    $location.path("/complaintdetails/"+params.nodes);
+                }
+                if(params.nodes.toString().charAt(0)==='U'){
+
+                    console.log("This is the value--"+params.nodes);
+                    console.log(data.nodes.length);
+                    for(var i=0;i<data.nodes.length;i++){
+                        console.log("This is the email id:"+data.nodes[i].title);
+                        if(params.nodes.toString()===data.nodes[i].id.toString()){
+                            console.log("INT THE IF--------------"+data.nodes[i].title);
+                            //params.nodes = param.nodes.toString().substr(1);
+                            //$location.path("/user/"+data.nodes[i].title);
+                            $location.path("/admuser/"+data.nodes[i].title);
+                            break;
+                        }
+
+                    }
+                }
             });
+
+
             network.on("doubleClick", function (params) {
                 params.event = "[original event]";
-                console.log(JSON.stringify(params, null, 4));
+                //$location.path("/complaint/"+);
+                console.log("The value of params"+JSON.stringify(params, null, 4));
             });
 
         });
