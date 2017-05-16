@@ -43,14 +43,14 @@ function($scope,$rootScope,$cookies,$location,$routeParams,AdminDashboardService
                 params.event = "[original event]";
                 if(params.nodes.toString().charAt(0)==='C'){
                     var complaintPk = params.nodes.toString().substr(1);
-                    $location.path("/complaintdetails/"+complaintPk);
+                    //$location.path("/complaintdetails/"+complaintPk);
+                    window.location.href = "#/complaintdetails/"+complaintPk;
                 }
-                if(params.nodes.toString().charAt(0)==='U'){
+                else if(params.nodes.toString().charAt(0)==='U'){
                     var userPk = params.nodes.toString().substr(1);
-                    console.log("Fetched userPk: "+ userPk);
+                    window.location.href = "#/admuser/"+userPk;
+                    //$location.path("/admuser/"+userPk);
 
-                    $location.path("/admuser/"+userPk);
-                    //console.log($location.path());
                 }
             });
             network.on("doubleClick", function (params) {

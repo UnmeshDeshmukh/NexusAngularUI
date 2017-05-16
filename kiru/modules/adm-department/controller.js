@@ -46,16 +46,21 @@ function($scope,$rootScope,$cookies,$location,AdminDepartmentService,Authenticat
                 if(params.nodes.toString().charAt(0)==='U'){
                     console.log("This is the value--"+params.nodes);
                     console.log(data.nodes.length);
-                    for(var i=0;i<data.nodes.length;i++){
-                        //console.log("This is the email id:"+data.nodes[i].title);
-                        if(params.nodes.toString()===data.nodes[i].id.toString()){
-                            console.log("INT THE IF--------------"+data.nodes[i].title);
-                            //params.nodes = param.nodes.toString().substr(1);
-                            $location.path("/admuser/"+data.nodes[i].title);
-                            break;
-                        }
 
-                    }
+                    var userPk = params.nodes.toString().substr(1);
+                    window.location.href = "#/admuser/"+userPk;
+                    // for(var i=0;i<data.nodes.length;i++){
+                    //     //console.log("This is the email id:"+data.nodes[i].title);
+                    //
+                    //     if(params.nodes.toString()===data.nodes[i].id.toString()){
+                    //         console.log("INT THE IF--------------"+data.nodes[i].title);
+                    //         //params.nodes = param.nodes.toString().substr(1);
+                    //         //$location.path("/admuser/"+data.nodes[i].title);
+                    //         window.location.href = "#/admuser/"+data.nodes[i].title;
+                    //         break;
+                    //     }
+                    //
+                    // }
                 }
 
             });
